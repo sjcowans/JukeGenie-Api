@@ -1,4 +1,4 @@
-class SuggestionsController
+class SuggestionsController < ApplicationController
   def create
     if artist conversion table empty
       table info = SearchFacade.new(convert stuff)

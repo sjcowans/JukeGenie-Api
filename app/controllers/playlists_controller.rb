@@ -1,4 +1,4 @@
-class PlaylistsController
+class PlaylistsController < ApplicationController
   def create
     Suggestion.create!()
     Playlist request
