@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     conn = Faraday.new(url: 'https://accounts.spotify.com/authorize')
 
     response = conn.post('/login/oauth/access_token') do |req|
-      binding.pry
       req.params['code'] = code
       req.params['client_id'] = client_id
       req.params['client_secret'] = client_secret
@@ -28,5 +27,12 @@ class SessionsController < ApplicationController
     user.token    = access_token
     user.save
     session[:user_id] = user.id
+    if user.email_confirmed
+      user_path(user)
+    else
+      flash.now[:error] = 'Please activate your account by following the 
+      instructions in the account confirmation email you received to proceed'
+      root_path
+    end
   end
 end
