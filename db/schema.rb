@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_01_180702) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_01_234914) do
+  create_table "playlist_tracks", force: :cascade do |t|
+    t.integer "playlist_id_id"
+    t.integer "track_id_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["playlist_id_id"], name: "index_playlist_tracks_on_playlist_id_id"
+    t.index ["track_id_id"], name: "index_playlist_tracks_on_track_id_id"
+  end
+
   create_table "playlists", force: :cascade do |t|
     t.string "name"
     t.float "lon"
@@ -29,6 +38,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_180702) do
     t.index ["user_id"], name: "index_suggestions_on_user_id"
   end
 
+  create_table "tracks", force: :cascade do |t|
+    t.string "spotify_track_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_playlists", force: :cascade do |t|
+    t.integer "user_id_id"
+    t.integer "playlist_id_id"
+    t.boolean "host"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["playlist_id_id"], name: "index_user_playlists_on_playlist_id_id"
+    t.index ["user_id_id"], name: "index_user_playlists_on_user_id_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
@@ -39,5 +64,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_01_180702) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "playlist_tracks", "playlist_ids"
+  add_foreign_key "playlist_tracks", "track_ids"
   add_foreign_key "suggestions", "users"
+  add_foreign_key "user_playlists", "playlist_ids"
+  add_foreign_key "user_playlists", "user_ids"
 end
