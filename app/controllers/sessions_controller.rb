@@ -28,6 +28,5 @@ class SessionsController < ApplicationController
     user.token    = access_token
     user.save
     session[:user_id] = user.id
-
   end
 end
