@@ -99,6 +99,8 @@ GEM
     io-console (0.6.0)
     irb (1.6.4)
       reline (>= 0.3.0)
+    jsonapi-serializer (2.2.0)
+      activesupport (>= 4.2)
     jwt (2.7.0)
     loofah (2.21.3)
       crass (~> 1.0.2)
@@ -236,6 +238,7 @@ DEPENDENCIES
   bootsnap
   debug
   dotenv-rails
+  jsonapi-serializer
   omniauth
   omniauth-spotify
   pry

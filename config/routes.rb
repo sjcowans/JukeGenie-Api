@@ -4,13 +4,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  post '/playlists', to: 'playlists#create'
-  get '/login', to: 'login#create'
-  get "/auth/spotify/callback", to: 'users#show'
 
-  resources :users, only: %i[new create show update] do
-    member do
-      get :confirm_email
+  namespace :api  do
+    namespace :v1 do
+      post '/playlists', to: 'playlists#create'
+      resources :users, only: %i[new create show update] do
+        member do
+          get :confirm_email
+        end
+      end
     end
   end
+  get '/login', to: 'login#create'
+  get "/auth/spotify/callback", to: 'users#show'
 end
