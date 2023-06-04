@@ -17,6 +17,15 @@ class Api::V1::UsersController < ApplicationController
   def new
   end
 
+  def update
+    user = User.find(params[:id])
+    if user.update(user_params)
+      render json: UserSerializer.new(user), status: 201
+    else
+      render json: ErrorSerializer.new(user.errors).user_invalid_attributes_serialized_json, status: 400
+    end
+  end
+
   private 
   
     def not_found(exception)

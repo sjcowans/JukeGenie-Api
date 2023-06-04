@@ -134,4 +134,77 @@ describe "Users API" do
           )
     end
   end
+
+  describe "POST /api/v1/users/:id" do
+    it "can patch attributes passed as JSON to a user" do
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "0", spotify_id: "fasidfuasfd")
+      original_user = User.last
+
+      user_params = {
+          "username": "King Kong",
+          "token": "foiasjf0940923jd43"
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      patch "/api/v1/users/#{user.id}", headers: headers, params: JSON.generate({user: user_params})
+
+      updated_user = User.find_by(id: user.id)
+
+      expect(response).to be_successful
+      expect(updated_user.username).to_not eq(original_user.username)
+      expect(updated_user.token).to_not eq(original_user.token)
+      expect(updated_user.username).to eq("King Kong")
+      expect(updated_user.token).to eq("foiasjf0940923jd43")
+    end
+
+    it "if input ID is not in database, error is sent" do
+      user_params = {
+          "username": "King Kong",
+          "token": "foiasjf0940923jd43"
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      patch "/api/v1/users/7384638495", headers: headers, params: JSON.generate({user: user_params})
+
+      expect(response.status).to eq(404)
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+      
+      expect(error_message).to eq({
+            "errors": [
+                {
+                    "detail": "Couldn't find User with 'id'=7384638495"
+                }
+            ]
+        }
+          )
+    end
+
+    it "if passed attributes are missing, error 400 is sent with message" do
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "0", spotify_id: "fasidfuasfd")
+
+      user_params = {
+          "username": "",
+          "token": nil
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      patch "/api/v1/users/#{user.id}", headers: headers, params: JSON.generate({user: user_params})
+
+      expect(response.status).to eq(400)
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+      
+      expect(error_message).to eq({
+            "errors": [
+                {
+                    "detail": "Validation failed: Username can't be blank, Token can't be blank"
+                }
+            ]
+        }
+          )
+    end
+  end
 end
