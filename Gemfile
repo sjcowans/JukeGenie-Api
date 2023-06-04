@@ -31,6 +31,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'omniauth-spotify'
 gem 'omniauth'
+gem 'dotenv-rails'
 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -53,6 +54,7 @@ group :development do
 end
 
 group :test do
-
+  gem "webmock"
+  gem "vcr"
 end
 
