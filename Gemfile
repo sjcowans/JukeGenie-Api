@@ -32,7 +32,7 @@ gem "bootsnap", require: false
 gem 'omniauth-spotify'
 gem 'omniauth'
 gem 'dotenv-rails'
-gem 'aws-sdk-rails'
+gem 'jsonapi-serializer'
 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
