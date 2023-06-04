@@ -10,6 +10,7 @@ describe "Users API" do
       
       parsed_user = JSON.parse(response.body, symbolize_names: true)
       expect(response).to be_successful
+      expect(response.status).to eq(200)
   
       expect(parsed_user[:data]).to have_key(:id)
       expect(parsed_user[:data][:id]).to be_a(String)
@@ -41,6 +42,26 @@ describe "Users API" do
 
       expect(parsed_user[:data][:attributes]).to have_key(:confirm_token)
       expect(parsed_user[:data][:attributes][:confirm_token]).to be_a(String)
+    end
+
+    it "if input ID is not in database, error is sent" do
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "1", spotify_id: "fasidfuasfd", confirm_token: "oojidjfaosdf")
+
+      get "/api/v1/users/#{user.id}023423"
+
+      expect(response.status).to eq(404)
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message).to eq({
+            "errors": [
+                {
+                    "detail": "Couldn't find User with 'id'=#{user.id}023423"
+                }
+            ]
+        }
+          )
     end
   end
 end
