@@ -26,7 +26,6 @@ class SpotifyService
     end
     JSON.parse(response.body, symbolize_names: true)
   end
-  
 
   def create_playlist(user_id, playlist_name)
     response = conn.post do |req|
