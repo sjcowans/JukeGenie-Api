@@ -22,7 +22,7 @@ RSpec.describe SpotifyService do
   it 'can search for a track' do
     params = {
       artist: "Linkin Park",
-      track: "In The End"
+      track: "In The End",
       type: "track"
     }
 
