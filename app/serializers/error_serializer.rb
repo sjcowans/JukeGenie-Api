@@ -13,4 +13,14 @@ class ErrorSerializer
       ]
     }
   end
+
+  def user_invalid_attributes_serialized_json
+    {
+      errors: [
+        {
+          detail: "Validation failed: #{@error_object.full_messages.join(", ")}"
+        }
+      ]
+    }
+  end
 end
