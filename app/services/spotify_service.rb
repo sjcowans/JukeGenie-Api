@@ -26,13 +26,12 @@ class SpotifyService
     end
     JSON.parse(response.body, symbolize_names: true)
   end
-  
 
   def create_playlist(user_id, playlist_name)
     response = conn.post do |req|
       req.url "users/#{user_id}/playlists"
       req.headers['Content-Type'] = 'application/json'
-      req.body['name'] = playlist_name
+      req.body = { name: playlist_name }.to_json
     end
     JSON.parse(response.body, symbolize_names: true)
   end
@@ -40,10 +39,11 @@ class SpotifyService
   def add_tracks_to_playlist(playlist_id, track_uris, position: nil)
     response = conn.post do |req|
       req.url "playlists/#{playlist_id}/tracks"
-      req.headers['Authorization'] = "Bearer #{@access_token}"
       req.headers['Content-Type'] = 'application/json'
-      req.body['uris'] = track_uris
-      req.body['position'] = position
+      req.body = {
+        uris: track_uris,
+        position: position
+      }.to_json
     end
     JSON.parse(response.body, symbolize_names: true)
   end
@@ -70,8 +70,10 @@ class SpotifyService
     response = Faraday.new(url: 'https://accounts.spotify.com/api/token').post do |req|
       req.headers['Authorization'] = "Basic #{credentials}"
       req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-      req.body['grant_type'] = 'refresh_token'
-      req.body['refresh_token'] = refresh_token
+      req.body = URI.encode_www_form({
+        grant_type: 'refresh_token',
+        refresh_token: refresh_token
+      })
     end
     JSON.parse(response.body)["access_token"]
   end
