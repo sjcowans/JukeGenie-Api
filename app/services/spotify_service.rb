@@ -1,57 +1,58 @@
 class SpotifyService
-  def initialize(access_token)
-    @access_token = access_token
+  def initialize(refresh_token)
+    @access_token = get_access_token(refresh_token)
   end
 
   def recommendations(seeds)
     response = conn.get do |req|
-      req.url 'recommendations', {
-      seed_artists: seeds[:artists].join(',') if seeds[:artists],
-      seed_genres: seeds[:genres].join(',') if seeds[:genres],
-      seed_tracks: seeds[:tracks].join(',') if seeds[:tracks],
-      market: "US"
-      }
+      req.url 'recommendations'
+      req.params[:seed_artists] = seeds[:artists].join(',') if seeds[:artists]
+      req.params[:seed_genres] = seeds[:genres].join(',') if seeds[:genres]
+      req.params[:seed_tracks] = seeds[:tracks].join(',') if seeds[:tracks]
+      req.params[:market] = "US"
     end
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def search(params, type)
+  def search(params)
     response = conn.get do |req|
-      req.url 'search', { 
-        query: querify(params), 
-        type: type,
+      req.url 'search'
+      req.params = { 
+        q: querify(params), 
+        type: params[:type],
         limit: 1,
         market: "US"
       }
     end
     JSON.parse(response.body, symbolize_names: true)
   end
+  
 
   def create_playlist(user_id, playlist_name)
     response = conn.post do |req|
-      req.url "/users/#{user_id}/playlists", {
-        name: playlist_name,
-        public: true,
-        collaborative: true
-      }
+      req.url "users/#{user_id}/playlists"
+      req.headers['Content-Type'] = 'application/json'
+      req.body['name'] = playlist_name
     end
     JSON.parse(response.body, symbolize_names: true)
   end
-
+  
   def add_tracks_to_playlist(playlist_id, track_uris, position: nil)
     response = conn.post do |req|
-      req.url "/playlists/#{playlist_id}/tracks", {
-        uris: track_uris,
-        position: position
-      }
+      req.url "playlists/#{playlist_id}/tracks"
+      req.headers['Authorization'] = "Bearer #{@access_token}"
+      req.headers['Content-Type'] = 'application/json'
+      req.body['uris'] = track_uris
+      req.body['position'] = position
     end
     JSON.parse(response.body, symbolize_names: true)
   end
 
   def get_playlist(playlist_id)
     response = conn.get do |req|
-      req.url "/playlists/#{playlist_id}"
-      req.params['fields'] = tracks.items(track(name,href,album(name,href)))
+      req.url "playlists/#{playlist_id}"
+      req.headers['Content-Type'] = 'application/json'
+      req.params['fields'] = 'tracks.items(track(name,href,album(name,href)))'
     end
     JSON.parse(response.body, symbolize_names: true)
   end
@@ -64,13 +65,24 @@ class SpotifyService
     end
   end
 
+  def get_access_token(refresh_token)
+    credentials = Base64.strict_encode64("#{ENV['CLIENT_ID']}:#{ENV['CLIENT_SECRET']}")
+    response = Faraday.new(url: 'https://accounts.spotify.com/api/token').post do |req|
+      req.headers['Authorization'] = "Basic #{credentials}"
+      req.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+      req.body['grant_type'] = 'refresh_token'
+      req.body['refresh_token'] = refresh_token
+    end
+    JSON.parse(response.body)["access_token"]
+  end
+
   def querify(params)
     query_parts = []
   
-    query_parts << "artist:#{params[:artist]}" if params[:artist] && !params[:artist].empty?
-    query_parts << "track:#{params[:track]}" if params[:track] && !params[:track].empty?
-    query_parts << "genre:#{params[:genre]}" if params[:genre] && !params[:genre].empty?
+    query_parts << "artist:#{params[:artist]}" if params[:artist].present?
+    query_parts << "track:#{params[:track]}" if params[:track].present?
+    query_parts << "genre:#{params[:genre]}" if params[:genre].present?
   
-    query_parts.join("%20")
-  end
+    query_parts.join(" ")
+  end  
 end
