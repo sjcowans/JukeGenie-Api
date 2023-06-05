@@ -1,0 +1,198 @@
+require 'rails_helper'
+
+describe "Suggestions API Calls" do
+  describe "POST /api/v1/suggestions" do
+    it "is passed valid ids as JSON from user and playlist and creates a suggestion" do
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "1", spotify_id: "fasidfuasfd")
+      playlist = Playlist.create!(name: "Bob's playlist", lat: 1.120394 lon: 1.352345)
+
+      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id, host: true)
+
+      expect(user.suggestions.count).to eq(0)
+      expect(playlist.suggestions.count).to eq(0)
+
+      suggestions_params = {
+          "user_id": user.id,
+          "playlist_id": playlist.id,
+          "type": 0
+          "request": "Hey Jude"
+      }
+
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      post "/api/v1/suggestions", headers: headers, params: JSON.generate(suggestion: suggestions_params)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(201)
+
+      formatted_responce = JSON.parse(response.body, symbolize_names: true)
+
+      expect(formatted_responce).to be_a(Hash)
+      expect(formatted_responce).to have_key(:message)
+      expect(formatted_responce[:message]).to eq("Successfully added suggestion")
+
+      suggestion = Suggestion.last
+
+      expect(user.suggestions).to include(suggestion)
+      expect(playlist.suggestions).to include(suggestion)
+    end
+
+    it "if input id(s) are not valid, error 404 with message is sent" do
+      suggestions_params = {
+        "user_id": "29382",
+        "playlist_id": "23094",
+        "type": 0
+        "request": "Hey Jude"
+    }
+
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      post "/api/v1/suggestions", headers: headers, params: JSON.generate(suggestion: suggestions_params)
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message).to eq({
+        "errors": [
+              {
+                  "detail": "Validation failed: User must exist, Playlist must exist"
+              }
+          ]
+      }
+        )
+    end
+
+    it "if user or playlist id are not passed in, error 400 with message is sent" do
+      suggestions_params = {
+        "user_id": "",
+        "playlist_id": "",
+        "type": 0
+        "request": "Hey Jude"
+    }
+
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      post "/api/v1/suggestions", headers: headers, params: JSON.generate(suggestion: suggestions_params)
+
+      expect(response.status).to eq(400)
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message).to eq({
+            "errors": [
+                {
+                    "detail": "Validation failed: User can't be blank, Playlist can't be blank"
+                }
+            ]
+        }
+          )
+    end
+
+    it "if suggestion already exists based on ids, new suggestion is still created" do
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "1", spotify_id: "fasidfuasfd")
+      playlist = Playlist.create!(name: "Bob's playlist", lat: 1.120394 lon: 1.352345)
+
+      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id, host: true)
+
+      suggestion1 = Suggestion.create!(user_id: user.id, playlist_id: playlist.id, type: 0, request: "Hey Jude")
+
+      suggestions_params = {
+          "user_id": user.id,
+          "playlist_id": playlist.id,
+          "type": 0
+          "request": "Golden Slumbers"
+      }
+
+
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      post "/api/v1/suggestions", headers: headers, params: JSON.generate(suggestion: suggestions_params)
+
+      expect(response).to be_successful
+      expect(response.status).to eq(201)
+
+      formatted_responce = JSON.parse(response.body, symbolize_names: true)
+
+      expect(formatted_responce).to be_a(Hash)
+      expect(formatted_responce).to have_key(:message)
+      expect(formatted_responce[:message]).to eq("Successfully added suggestion")
+
+      suggestion2 = Suggestion.last
+
+      expect(user.suggestions).to include(suggestion2)
+      expect(playlist.suggestions).to include(suggestion2)
+
+      expect(user.suggestions.count).to eq(2)
+      expect(playlist.suggestions.count).to eq(2)
+    end
+  end
+
+  describe "DELETE /api/v1/suggestions" do
+    it "destroys the existing suggestion" do
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "1", spotify_id: "fasidfuasfd")
+      playlist = Playlist.create!(name: "Bob's playlist", lat: 1.120394 lon: 1.352345)
+
+      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id, host: true)
+
+      suggestion1 = Suggestion.create!(user_id: user.id, playlist_id: playlist.id, type: 0, request: "Hey Jude")
+
+      expect(Suggestion.count).to eq(1)
+      expect(user.suggestions.count).to eq(1)
+
+      suggestion_params = {
+          "user_id": user.id,
+          "playlist_id": playlist.id
+      }
+
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      delete "/api/v1/suggestions", headers: headers, params: JSON.generate(suggestion: suggestion_params)
+
+
+      expect(response).to be_successful
+      expect(response.status).to eq(204)
+
+      expect(Suggestion.count).to eq(0)
+      expect(user.suggestions.count).to eq(0)
+
+      expect{Suggestion.find(suggestion1.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it "if passed in ids do not lead to a found Suggestion, error 404 is sent" do
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "1", spotify_id: "fasidfuasfd")
+      playlist = Playlist.create!(name: "Bob's playlist", lat: 1.120394 lon: 1.352345)
+
+      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id, host: true)
+
+      suggestion1 = Suggestion.create!(user_id: user.id, playlist_id: playlist.id, type: 0, request: "Hey Jude")
+
+
+
+      suggestion_params = {
+          "user_id": user.id,
+          "playlist_id": "11111111"
+      }
+
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      delete "/api/v1/suggestions", headers: headers, params: JSON.generate(suggestion: suggestion_params)
+
+      expect(response.status).to eq(404)
+      expect(response).to_not be_successful
+
+      error_message = JSON.parse(response.body, symbolize_names: true)
+
+      expect(error_message).to eq({
+              "errors": [
+                  {
+                      "detail": "No Suggestion with user_id=#{user.id} AND playlist_id=11111111 exists"
+                  }
+              ]
+          }
+        )
+    end
+  end
+end
