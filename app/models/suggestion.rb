@@ -2,8 +2,10 @@ class Suggestion < ApplicationRecord
   belongs_to :user
   belongs_to :playlist
 
-  validates :type, presence: true
+  validates :media_type, presence: true
   validates :request, presence: true
+  validates :user_id, presence: true
+  validates :playlist_id, presence: true
 
-  enum type: %w(track artist genre)
+  enum media_type: %w(track artist genre)
 end

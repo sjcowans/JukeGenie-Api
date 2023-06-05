@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_181839) do
   end
 
   create_table "suggestions", force: :cascade do |t|
-    t.integer "type"
+    t.integer "media_type"
     t.string "request"
     t.integer "user_id"
     t.datetime "created_at", null: false

@@ -23,4 +23,15 @@ class ErrorSerializer
       ]
     }
   end
+
+  def nil_values_serialized_json
+    kept_errors = @error_object.full_messages.delete_if { |error| error.include?("must exist")}
+    {
+            "errors": [
+                {
+                    "detail": "Validation failed: #{kept_errors.join(", ")}"
+                }
+            ]
+        }
+  end
 end
