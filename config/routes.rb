@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api  do
     namespace :v1 do
       post '/playlists', to: 'playlists#create'
+      resources :tracks, only: %i[show new create update destroy]
       resources :users, only: %i[new create show update]
       resources :suggestions, only: %i[new create update]
       delete "/suggestions", to: "suggestions#destroy"
