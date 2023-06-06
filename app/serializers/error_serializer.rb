@@ -34,4 +34,24 @@ class ErrorSerializer
             ]
         }
   end
+
+  def track_not_found_serialized_json
+    {
+      errors: [
+        {
+          detail: @error_object,
+        }
+      ]
+    }
+  end
+
+  def track_invalid_attributes_serialized_json
+    {
+      errors: [
+        {
+          detail: "Validation failed: #{@error_object.full_messages.join(", ")}"
+        }
+      ]
+    }
+  end
 end

@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_162158) do
     t.json "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "user_playlists", force: :cascade do |t|
