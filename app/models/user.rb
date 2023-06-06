@@ -6,6 +6,5 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :email, presence: true
   validates :token, presence: true
-  validates :role, presence: true
   validates :spotify_id, presence: true
 end
