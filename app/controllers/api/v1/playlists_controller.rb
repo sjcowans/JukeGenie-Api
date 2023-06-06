@@ -4,12 +4,9 @@ class Api::V1::PlaylistsController < ApplicationController
 
   def create
     playlist = @facade.create_playlist(playlist_params)
-    if playlist.persisted?
-      render json: PlaylistSerializer.new(playlist).serialized_json
-    else
-      raise ActiveRecord::RecordInvalid.new(playlist)
-    end
+    render json: PlaylistSerializer.new(playlist).serializable_hash.to_json, status: :created
   end
+  
 
   private
 
@@ -23,5 +20,5 @@ class Api::V1::PlaylistsController < ApplicationController
 
   def record_invalid(exception)
     render json: ErrorSerializer.new(exception.record.errors).user_invalid_attributes_serialized_json, status: :unprocessable_entity
-  end
+  end  
 end
