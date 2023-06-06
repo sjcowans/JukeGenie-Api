@@ -6,6 +6,11 @@ class Api::V1::PlaylistsController < ApplicationController
     playlist = @facade.create_playlist(playlist_params)
     render json: PlaylistSerializer.new(playlist).serializable_hash.to_json, status: :created
   end
+
+  def generate_playlist
+    playlist = Playlist.find_by(params[:spotify_id])
+    @facade.generate_playlist(playlist)
+  end
   
 
   private
@@ -15,7 +20,7 @@ class Api::V1::PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:name, :lon, :lat)
+    params.require(:playlist).permit(:name, :spotify_id, :lon, :lat)
   end
 
   def record_invalid(exception)
