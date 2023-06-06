@@ -8,13 +8,12 @@ Rails.application.routes.draw do
   namespace :api  do
     namespace :v1 do
       post '/playlists', to: 'playlists#create'
-      resources :users, only: %i[new create show update] do
-        member do
-          get :confirm_email
-        end
-      end
+      resources :users, only: %i[new create show update]
+      resources :suggestions, only: %i[new create update]
+      delete "/suggestions", to: "suggestions#destroy"
     end
   end
+
   get '/login', to: 'login#create'
   get "/auth/spotify/callback", to: 'users#show'
 end
