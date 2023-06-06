@@ -4,7 +4,7 @@ class CreatePlaylists < ActiveRecord::Migration[7.0]
       t.string :name
       t.float :lon
       t.float :lat
-      
+
       t.timestamps
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_06_162158) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.string "spotify_id"
@@ -22,8 +22,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_162158) do
   end
 
   create_table "playlist_tracks", force: :cascade do |t|
-    t.integer "playlist_id"
-    t.integer "track_id"
+    t.integer "playlist_id", null: false
+    t.integer "track_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["playlist_id"], name: "index_playlist_tracks_on_playlist_id"
@@ -41,28 +41,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_162158) do
   create_table "suggestions", force: :cascade do |t|
     t.integer "seed_type"
     t.string "request"
-    t.integer "user_id"
+    t.string "track_artist"
+    t.string "spotify_artist_id"
+    t.string "spotify_track_id"
+    t.integer "user_id_id", null: false
+    t.integer "playlist_id_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "spotify_artist_id"
-    t.string "track_artist"
-    t.integer "playlist_id", null: false
-    t.string "spotify_track_id"    t.index ["playlist_id"], name: "index_suggestions_on_playlist_id"
-    t.index ["user_id"], name: "index_suggestions_on_user_id"
+    t.index ["playlist_id_id"], name: "index_suggestions_on_playlist_id_id"
+    t.index ["user_id_id"], name: "index_suggestions_on_user_id_id"
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.string "spotify_track_id"
+    t.string "name"
+    t.string "spotify_id"
     t.integer "popularity"
     t.json "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
   end
 
   create_table "user_playlists", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "playlist_id"
+    t.integer "user_id", null: false
+    t.integer "playlist_id", null: false
     t.boolean "host"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,7 +75,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_162158) do
     t.string "username"
     t.string "email"
     t.string "token"
-    t.string "role"
     t.string "spotify_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -82,8 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_162158) do
 
   add_foreign_key "playlist_tracks", "playlists"
   add_foreign_key "playlist_tracks", "tracks"
-  add_foreign_key "suggestions", "playlists"
-  add_foreign_key "suggestions", "users"
+  add_foreign_key "suggestions", "playlist_ids"
+  add_foreign_key "suggestions", "user_ids"
   add_foreign_key "user_playlists", "playlists"
   add_foreign_key "user_playlists", "users"
 end
