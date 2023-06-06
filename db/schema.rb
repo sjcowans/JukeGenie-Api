@@ -47,8 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_162158) do
     t.string "spotify_artist_id"
     t.string "track_artist"
     t.integer "playlist_id", null: false
-    t.string "spotify_track_id"
-    t.index ["playlist_id"], name: "index_suggestions_on_playlist_id"
+    t.string "spotify_track_id"    t.index ["playlist_id"], name: "index_suggestions_on_playlist_id"
     t.index ["user_id"], name: "index_suggestions_on_user_id"
   end
 
