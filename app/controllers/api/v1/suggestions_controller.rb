@@ -9,7 +9,7 @@ class Api::V1::SuggestionsController < ApplicationController
   def create
     suggestion = @facade.create_suggestion(suggestion_params)
     if suggestion.persisted?
-      render json: SuggestionSerializer.new(suggestion), status: 201
+      render json: SuggestionSerializer.new(suggestion).serializable_hash.to_json, status: 201
     else
       errors_determination(suggestion.errors)
     end
