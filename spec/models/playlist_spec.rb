@@ -5,5 +5,6 @@ RSpec.describe Playlist, type: :model do
     it { should have_many :playlist_tracks}
     it { should have_many :user_playlists}
     it { should have_many(:users).through(:user_playlists)}
+    it { should have_many :suggestions }
   end
 end
