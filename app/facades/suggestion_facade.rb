@@ -62,7 +62,7 @@ class SuggestionFacade
         popularity: info[:popularity]
         images: info[:images]
       )
-      new_artist.spotify_id
+      new_track.spotify_id
     end
   end
 end
