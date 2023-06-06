@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_181839) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_162158) do
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
+    t.string "spotify_id"
+    t.text "genres"
+    t.integer "popularity"
+    t.json "images"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "playlist_tracks", force: :cascade do |t|
     t.integer "playlist_id"
     t.integer "track_id"
@@ -29,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_181839) do
   end
 
   create_table "suggestions", force: :cascade do |t|
-    t.integer "media_type"
+    t.integer "seed_type"
     t.string "request"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -37,12 +47,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_181839) do
     t.string "spotify_artist_id"
     t.string "track_artist"
     t.integer "playlist_id", null: false
+    t.string "spotify_track_id"
     t.index ["playlist_id"], name: "index_suggestions_on_playlist_id"
     t.index ["user_id"], name: "index_suggestions_on_user_id"
   end
 
   create_table "tracks", force: :cascade do |t|
     t.string "spotify_track_id"
+    t.integer "popularity"
+    t.json "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
