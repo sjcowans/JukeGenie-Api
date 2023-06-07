@@ -7,11 +7,11 @@ class Api::V1::PlaylistsController < ApplicationController
     render json: PlaylistSerializer.new(playlist).serializable_hash.to_json, status: :created
   end
 
-  def generate_playlist
-    playlist = Playlist.find_by(params[:spotify_id])
-    @facade.generate_playlist(playlist)
+  def populate
+    playlist = Playlist.find_by(spotify_id: params[:spotify_id])
+    @facade.populate_playlist(playlist)
+    render json: PlaylistSerializer.new(playlist).serializable_hash.to_json, status: :ok
   end
-  
 
   private
 
