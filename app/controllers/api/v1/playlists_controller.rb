@@ -7,6 +7,10 @@ class Api::V1::PlaylistsController < ApplicationController
     render json: PlaylistSerializer.new(playlist).serializable_hash.to_json, status: :created
   end
   
+  def index
+    require 'pry'; binding.pry
+    playlists = Playlist.where()
+  end
 
   private
 
@@ -15,7 +19,7 @@ class Api::V1::PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:name, :lon, :lat)
+    params.require(:playlist).permit(:name, :longitude, :latitude, :input_address, :range)
   end
 
   def record_invalid(exception)

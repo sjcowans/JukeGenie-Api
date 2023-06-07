@@ -6,6 +6,7 @@ class CreatePlaylists < ActiveRecord::Migration[7.0]
       t.float :latitude
       t.string :input_address
       t.float :range
+      t.string :spotify_id
 
       t.timestamps
     end
