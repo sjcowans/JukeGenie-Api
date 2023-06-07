@@ -7,6 +7,11 @@ class Api::V1::PlaylistsController < ApplicationController
     render json: PlaylistSerializer.new(playlist).serializable_hash.to_json, status: :created
   end
   
+  def show
+    playlist = Playlist.find(params[:id])
+    render json: PlaylistSerializer.new(playlist).serializable_hash.to_json, status: 200
+  end
+
   def index
     playlists = []
     Playlist.find_each do |playlist|
