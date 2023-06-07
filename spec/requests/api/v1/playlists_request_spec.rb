@@ -3,12 +3,11 @@ require 'rails_helper'
 describe "Playlists API" do
   describe "GET /api/v1/playlists" do
     it "sends all playlists within a key of data" do
-      Playlist.create!(name: "Jump Up", range: 1000, input_address: "8500 Peña Blvd. Denver, CO 80249-6340")
-      Playlist.create!(name: "Jump Down from there", range: 900, input_address: "1560 Broadway Denver, CO 80202")
+      Playlist.create!(name: "Jump Up", range: 1000, input_address: "8500 Peña Blvd. Denver, CO 80249-6340", spotify_id: "23409")
+      Playlist.create!(name: "Jump Down from there", range: 900, input_address: "1560 Broadway Denver, CO 80202", spotify_id: "12098")
 
       @user = User.create!(username: "Henry", email: "henry@henry.com", token: "230984230948", spotify_id: "2304928430")
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
-      
+
       params = ({"lat"=>39.7866467, "lng"=>-104.8876735})
 
       headers = {"CONTENT_TYPE" => "application/json"}
@@ -36,7 +35,7 @@ describe "Playlists API" do
         expect(playlist[:attributes]).to have_key(:name)
         expect(playlist[:attributes][:name]).to be_a(String)
   
-        expect(playlist[:attributes]).to have_key(:street)
+        expect(playlist[:attributes]).to have_key(:range)
         expect(playlist[:attributes][:range]).to be_a(Float)
   
         expect(playlist[:attributes]).to have_key(:latitude)
@@ -45,11 +44,11 @@ describe "Playlists API" do
         expect(playlist[:attributes]).to have_key(:longitude)
         expect(playlist[:attributes][:longitude]).to be_a(Float)
   
-        expect(playlist[:attributes]).to have_key(:state)
+        expect(playlist[:attributes]).to have_key(:input_address)
         expect(playlist[:attributes][:input_address]).to be_a(String)
   
         expect(playlist[:attributes]).to have_key(:spotify_id)
-        expect(playlist[:attributes][:spotify_id]).to eq(nil)
+        expect(playlist[:attributes][:spotify_id]).to be_a(String)
       end
     end
   end

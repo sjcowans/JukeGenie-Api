@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
     t.float "longitude"
     t.float "latitude"
     t.string "input_address"
-    t.float "range"
+    t.float "range", default: 0.0
     t.string "spotify_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,12 +49,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
     t.string "spotify_track_id"
     t.integer "user_id", null: false
     t.integer "playlist_id", null: false
-    t.integer "user_id", null: false
-    t.integer "playlist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["playlist_id"], name: "index_suggestions_on_playlist_id"
-    t.index ["user_id"], name: "index_suggestions_on_user_id"
     t.index ["playlist_id"], name: "index_suggestions_on_playlist_id"
     t.index ["user_id"], name: "index_suggestions_on_user_id"
   end
@@ -89,8 +85,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
 
   add_foreign_key "playlist_tracks", "playlists"
   add_foreign_key "playlist_tracks", "tracks"
-  add_foreign_key "suggestions", "playlists"
-  add_foreign_key "suggestions", "users"
   add_foreign_key "suggestions", "playlists"
   add_foreign_key "suggestions", "users"
   add_foreign_key "user_playlists", "playlists"

@@ -5,7 +5,6 @@ class Playlist < ApplicationRecord
   has_many :suggestions
 
   validates :spotify_id, presence: true
-
   validates_presence_of :input_address
   validates_presence_of :range
   validates_presence_of :name
