@@ -37,11 +37,12 @@ class Api::V1::SuggestionsController < ApplicationController
   private
 
   def initialize_facade
-    @facade = SuggestionFacade.new(current_user)
+    @user = User.find(suggestion_params[:user_id])
+    @facade = SuggestionFacade.new(@user)
   end
 
   def suggestion_params
-    params.require(:suggestion).permit(:user_id, :playlist_id, :media_type, :request, :spotify_artist_id, :track_artist)
+    params.require(:suggestion).permit(:user_id, :playlist_id, :seed_type, :request, :spotify_artist_id, :track_artist)
   end
 
   def not_found(exception)

@@ -1,7 +1,7 @@
 class SuggestionFacade
   def initialize(user)
     @user = user
-    @service = SpotifyService.new(user.token)
+    @service = SpotifyService.new(@user.token)
   end
 
   def create_suggestion(params)
@@ -38,9 +38,9 @@ class SuggestionFacade
       })[:artists][:items].first
       new_artist = Artist.create(
         name: info[:name],
-        spotify_id: info[:id]
-        genres: info[:genres]
-        popularity: info[:popularity]
+        spotify_id: info[:id],
+        genres: info[:genres],
+        popularity: info[:popularity],
         images: info[:images]
       )
       new_artist.spotify_id
@@ -58,8 +58,8 @@ class SuggestionFacade
       })[:tracks][:items].first
       new_track = Track.create(
         name: info[:name],
-        spotify_id: info[:id]
-        popularity: info[:popularity]
+        spotify_id: info[:id],
+        popularity: info[:popularity],
         images: info[:images]
       )
       new_track.spotify_id

@@ -10,7 +10,7 @@ RSpec.describe PlaylistFacade do
   
   describe '#create_playlist' do
     it 'creates a new playlist' do
-      params = { name: 'Facade Test Playlist', range: 5, input_addres: 'north pole' }
+      params = { name: 'Facade Test Playlist', range: 5, input_address: 'north pole', host_id: @user.id }
       playlist = @facade.create_playlist(params)
       
       expect(playlist).to be_a(Playlist)
@@ -23,7 +23,8 @@ RSpec.describe PlaylistFacade do
   
   describe '#populate_playlist' do
     it 'populates a playlist with tracks' do
-      params = { name: 'Facade Test Populated Playlist', range: 5, input_addres: 'north pole' }
+      params = { name: 'Facade Test Populated Playlist', range: 5, input_address: 'north pole', host_id: @user.id }
+
       playlist = @facade.create_playlist(params)
       
       playlist.suggestions.create(seed_type: 'genre', request: 'pop')

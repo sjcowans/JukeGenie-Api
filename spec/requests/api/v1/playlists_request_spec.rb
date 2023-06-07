@@ -3,10 +3,11 @@ require 'rails_helper'
 describe "Playlists API" do
   describe "GET /api/v1/playlists" do
     it "sends all playlists within a key of data" do
-      Playlist.create!(name: "Jump Up", range: 1000, input_address: "8500 Peña Blvd. Denver, CO 80249-6340", spotify_id: "23409")
-      Playlist.create!(name: "Jump Down from there", range: 900, input_address: "1560 Broadway Denver, CO 80202", spotify_id: "12098")
-
       @user = User.create!(username: "Henry", email: "henry@henry.com", token: "230984230948", spotify_id: "2304928430")
+
+      Playlist.create!(name: "Jump Up", range: 1000, input_address: "8500 Peña Blvd. Denver, CO 80249-6340", spotify_id: "23409", host_id: @user.id)
+      Playlist.create!(name: "Jump Down from there", range: 900, input_address: "1560 Broadway Denver, CO 80202", spotify_id: "12098", host_id: @user.id)
+
 
       params = ({"lat"=>39.7866467, "lng"=>-104.8876735})
 

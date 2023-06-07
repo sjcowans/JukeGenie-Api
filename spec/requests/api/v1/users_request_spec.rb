@@ -4,7 +4,7 @@ describe "Users API" do
   describe "GET /api/v1/users/:id" do
     it "sends a User within a key of data" do
       
-      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "1", spotify_id: "fasidfuasfd")
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", spotify_id: "fasidfuasfd")
   
       get "/api/v1/users/#{user.id}"
       
@@ -31,15 +31,12 @@ describe "Users API" do
       expect(parsed_user[:data][:attributes]).to have_key(:token)
       expect(parsed_user[:data][:attributes][:token]).to be_a(String)
 
-      expect(parsed_user[:data][:attributes]).to have_key(:role)
-      expect(parsed_user[:data][:attributes][:role]).to be_a(String)
-
       expect(parsed_user[:data][:attributes]).to have_key(:spotify_id)
       expect(parsed_user[:data][:attributes][:spotify_id]).to be_a(String)
     end
 
     it "if input ID is not in database, error is sent" do
-      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "1", spotify_id: "fasidfuasfd")
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", spotify_id: "fasidfuasfd")
 
       get "/api/v1/users/#{user.id}023423"
 
@@ -101,9 +98,6 @@ describe "Users API" do
       expect(created_user_formatted[:data][:attributes]).to have_key(:token)
       expect(created_user_formatted[:data][:attributes][:token]).to be_a(String)
 
-      expect(created_user_formatted[:data][:attributes]).to have_key(:role)
-      expect(created_user_formatted[:data][:attributes][:role]).to be_a(String)
-
       expect(created_user_formatted[:data][:attributes]).to have_key(:spotify_id)
       expect(created_user_formatted[:data][:attributes][:spotify_id]).to be_a(String)
     end
@@ -127,7 +121,7 @@ describe "Users API" do
       expect(error_message).to eq({
             "errors": [
                 {
-                    "detail": "Validation failed: Token can't be blank, Role can't be blank, Spotify can't be blank"
+                    "detail": "Validation failed: Token can't be blank, Spotify can't be blank"
                 }
             ]
         }
@@ -137,7 +131,7 @@ describe "Users API" do
 
   describe "POST /api/v1/users/:id" do
     it "can patch attributes passed as JSON to a user" do
-      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "0", spotify_id: "fasidfuasfd")
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", spotify_id: "fasidfuasfd")
       original_user = User.last
 
       user_params = {
@@ -182,7 +176,7 @@ describe "Users API" do
     end
 
     it "if passed attributes are missing, error 400 is sent with message" do
-      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "0", spotify_id: "fasidfuasfd")
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", spotify_id: "fasidfuasfd")
 
       user_params = {
           "username": "",
