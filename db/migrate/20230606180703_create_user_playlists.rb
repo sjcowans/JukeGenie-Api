@@ -3,7 +3,7 @@ class CreateUserPlaylists < ActiveRecord::Migration[7.0]
     create_table :user_playlists do |t|
       t.references :user, null: false, foreign_key: true
       t.references :playlist, null: false, foreign_key: true
-      t.boolean :host
+      t.boolean :dj, default: false
 
       t.timestamps
     end
