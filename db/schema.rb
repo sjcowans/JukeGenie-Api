@@ -33,8 +33,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
   create_table "playlists", force: :cascade do |t|
     t.string "name"
     t.string "spotify_id"
-    t.float "lon"
-    t.float "lat"
+    t.float "range"
+    t.string "input_address"
+    t.float "longitude"
+    t.float "latitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
