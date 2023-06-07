@@ -8,9 +8,9 @@ RSpec.describe PlaylistFacade do
 
   end
   
-  describe '#create_playlist', :vcr do
+  describe '#create_playlist' do
     it 'creates a new playlist' do
-      params = { name: 'Facade Test Playlist', lon: '50.4547', lat: '30.5238' }
+      params = { name: 'Facade Test Playlist', range: 5, input_addres: 'north pole' }
       playlist = @facade.create_playlist(params)
       
       expect(playlist).to be_a(Playlist)
@@ -21,9 +21,9 @@ RSpec.describe PlaylistFacade do
     end
   end
   
-  describe '#populate_playlist', :vcr do
+  describe '#populate_playlist' do
     it 'populates a playlist with tracks' do
-      params = { name: 'Facade Test Populated Playlist', lon: '50.4547', lat: '30.5238' }
+      params = { name: 'Facade Test Populated Playlist', range: 5, input_addres: 'north pole' }
       playlist = @facade.create_playlist(params)
       
       playlist.suggestions.create(seed_type: 'genre', request: 'pop')
@@ -31,13 +31,14 @@ RSpec.describe PlaylistFacade do
       playlist.suggestions.create(seed_type: 'track', spotify_track_id: '0Svkvt5I79wficMFgaqEQJ')
       playlist.suggestions.create(seed_type: 'track', spotify_track_id: '7lQ8MOhq6IN2w8EYcFNSUk')
       playlist.suggestions.create(seed_type: 'artist', spotify_artist_id: '2h93pZq0e7k5yf4dywlkpM')
+      playlist.suggestions.create(seed_type: 'genre', request: 'techno')
 
       populated_playlist = @facade.populate_playlist(playlist)
   
       expect(populated_playlist).to be_a(Playlist)
   
       spotify_playlist = @service.fetch_playlist(populated_playlist.spotify_id)
-      expect(spotify_playlist[:tracks][:items].length).to be 10
+      expect(spotify_playlist[:tracks][:items].length).to be 20
     end
   end
 end

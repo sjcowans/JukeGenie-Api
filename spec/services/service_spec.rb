@@ -6,7 +6,7 @@ RSpec.describe SpotifyService do
     @service = SpotifyService.new(refresh_token)
   end
 
-  it 'can make recommendations', :vcr do
+  it 'can make recommendations' do
     seeds = {
       artists: ['2h93pZq0e7k5yf4dywlkpM'],
       genres: ['pop', 'rock'],
@@ -19,7 +19,7 @@ RSpec.describe SpotifyService do
     expect(result[:tracks]).to be_an(Array)
   end
 
-  it 'can search for a track', :vcr do
+  it 'can search for a track' do
     params = {
       artist: "Linkin Park",
       track: "In The End",
@@ -34,7 +34,7 @@ RSpec.describe SpotifyService do
     expect(result[:tracks][:items].first[:artists].first[:name]).to eq("Linkin Park")
   end
 
-  it 'can create a playlist', :vcr do
+  it 'can create a playlist' do
     user_id = "1281426323"
     playlist_name = "My Test Playlist"
 
@@ -44,7 +44,7 @@ RSpec.describe SpotifyService do
     expect(result[:name]).to eq(playlist_name)
   end
 
-  it 'can add tracks to a playlist', :vcr do
+  it 'can add tracks to a playlist' do
     playlist_id = '53wxBdREY48iHXn8Ke7PAJ'
     track_uris = ['spotify:track:2TpxZ7JUBn3uw46aR7qd6V', 'spotify:track:7dt6x5M1jzdTEt8oCbisTK']
 

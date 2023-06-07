@@ -16,11 +16,12 @@ class Api::V1::PlaylistsController < ApplicationController
   private
 
   def initialize_facade
-    @facade = PlaylistFacade.new(current_user)
+    user = User.find_by(params[:id])
+    @facade = PlaylistFacade.new(user)
   end
 
   def playlist_params
-    params.require(:playlist).permit(:name, :spotify_id, :lon, :lat)
+    params.require(:playlist).permit(:name, :spotify_id, :range, :input_address)
   end
 
   def record_invalid(exception)

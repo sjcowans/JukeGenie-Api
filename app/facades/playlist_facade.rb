@@ -9,8 +9,8 @@ class PlaylistFacade
     playlist = Playlist.create(
       name: info[:name],
       spotify_id: info[:id],
-      lon: params[:lon],
-      lat: params[:lat]
+      range: params[:range],
+      input_address: params[:input_address]
     )
     UserPlaylist.create(user_id: @user.id, playlist_id: playlist.id, host: true)
     playlist
