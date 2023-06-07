@@ -13,7 +13,7 @@ RSpec.describe SpotifyService do
       tracks: ['0Svkvt5I79wficMFgaqEQJ', '7lQ8MOhq6IN2w8EYcFNSUk']
     }
 
-    result = @service.recommendations(seeds)
+    result = @service.get_recommendations(seeds)
 
     expect(result).to be_a(Hash)
     expect(result[:tracks]).to be_an(Array)
@@ -53,7 +53,7 @@ RSpec.describe SpotifyService do
     expect(result).to be_a(Hash)
     expect(result[:snapshot_id]).to be_present
 
-    playlist = @service.get_playlist(playlist_id)
+    playlist = @service.fetch_playlist(playlist_id)
 
     expect(playlist).to be_a(Hash)
     expect(playlist[:tracks]).to be_a(Hash)

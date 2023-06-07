@@ -10,16 +10,23 @@ class Api::V1::PlaylistsController < ApplicationController
   def index
     require 'pry'; binding.pry
     playlists = Playlist.where()
+
+  def populate
+    playlist = Playlist.find_by(spotify_id: params[:spotify_id])
+    @facade.populate_playlist(playlist)
+    render json: PlaylistSerializer.new(playlist).serializable_hash.to_json, status: :ok
   end
 
   private
 
   def initialize_facade
-    @facade = PlaylistFacade.new(current_user)
+    user = User.find_by(params[:id])
+    @facade = PlaylistFacade.new(user)
   end
 
   def playlist_params
     params.require(:playlist).permit(:name, :longitude, :latitude, :input_address, :range)
+    params.require(:playlist).permit(:name, :spotify_id, :range, :input_address)
   end
 
   def record_invalid(exception)

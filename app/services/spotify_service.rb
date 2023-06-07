@@ -3,12 +3,13 @@ class SpotifyService
     @access_token = get_access_token(refresh_token)
   end
 
-  def recommendations(seeds)
+  def get_recommendations(seeds)
     response = conn.get do |req|
       req.url 'recommendations'
-      req.params[:seed_artists] = seeds[:artists].join(',') if seeds[:artists]
-      req.params[:seed_genres] = seeds[:genres].join(',') if seeds[:genres]
-      req.params[:seed_tracks] = seeds[:tracks].join(',') if seeds[:tracks]
+      req.params[:seed_artists] = seeds[:artists].join(',') if seeds[:artists].present?
+      req.params[:seed_genres] = seeds[:genres].join(',') if seeds[:genres].present?
+      req.params[:seed_tracks] = seeds[:tracks].join(',') if seeds[:tracks].present?
+      req.params[:limit] = 10
       req.params[:market] = "US"
     end
     JSON.parse(response.body, symbolize_names: true)
@@ -48,14 +49,14 @@ class SpotifyService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def get_playlist(playlist_id)
+  def fetch_playlist(playlist_id)
     response = conn.get do |req|
       req.url "playlists/#{playlist_id}"
       req.headers['Content-Type'] = 'application/json'
-      req.params['fields'] = 'tracks.items(track(name,href,album(name,href)))'
+      req.params['fields'] = 'name,id,tracks.items(track(name,href,album(name,href)))'
     end
     JSON.parse(response.body, symbolize_names: true)
-  end
+  end  
 
   private
   
