@@ -7,6 +7,7 @@ class CreatePlaylists < ActiveRecord::Migration[7.0]
       t.string :input_address
       t.float :range, default: 0
       t.string :spotify_id
+      t.references :host, null: false, foreign_key: { to_table: :users }
 
       t.timestamps
     end

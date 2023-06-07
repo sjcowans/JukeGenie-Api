@@ -7,12 +7,13 @@ class PlaylistFacade
   def create_playlist(params)
     info = @service.create_playlist(@user.spotify_id, params[:name])
     playlist = Playlist.create(
+      host_id: @user.id,
       name: info[:name],
       spotify_id: info[:id],
       range: params[:range],
       input_address: params[:input_address]
     )
-    UserPlaylist.create(user_id: @user.id, playlist_id: playlist.id, host: true)
+    UserPlaylist.create(user_id: @user.id, playlist_id: playlist.id, dj: true)
     playlist
   end
 

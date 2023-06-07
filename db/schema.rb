@@ -37,8 +37,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
     t.string "input_address"
     t.float "range", default: 0.0
     t.string "spotify_id"
+    t.integer "host_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["host_id"], name: "index_playlists_on_host_id"
   end
 
   create_table "suggestions", force: :cascade do |t|
@@ -67,7 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
   create_table "user_playlists", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "playlist_id", null: false
-    t.boolean "host"
+    t.boolean "dj", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["playlist_id"], name: "index_user_playlists_on_playlist_id"
@@ -85,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
 
   add_foreign_key "playlist_tracks", "playlists"
   add_foreign_key "playlist_tracks", "tracks"
+  add_foreign_key "playlists", "users", column: "host_id"
   add_foreign_key "suggestions", "playlists"
   add_foreign_key "suggestions", "users"
   add_foreign_key "user_playlists", "playlists"
