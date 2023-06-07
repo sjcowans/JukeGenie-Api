@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts.spotify.com/api/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=refresh_token&refresh_token=<REFRESH_TOKEN>
+    headers:
+      User-Agent:
+      - Faraday v2.7.5
+      Authorization:
+      - Basic NTIwODc0ZDQzYjg5NGM4M2JhNzc4MTcxYWVhZDE2YTU6M2U4OTBhM2Q5Nzg1NDE5YThjOTFkOWU5Y2RmYmE0NTY=
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 07 Jun 2023 00:33:34 GMT
+      Content-Type:
+      - application/json
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - __Host-device_id=AQBNvLg3P3KHYrfGpYMe0IAaYQxN9kirvPaWJRkLlsUmFbg7t6qfMs7d0A8_YSbo54NStqAU35OM84gDRTWNIxvh2UYSDCAW5VA;Version=1;Path=/;Max-Age=2147483647;Secure;HttpOnly;SameSite=Lax
+      - sp_tr=false;Version=1;Domain=accounts.spotify.com;Path=/;Secure;SameSite=Lax
+      Sp-Trace-Id:
+      - 4053108e8cfb6e21
+      X-Envoy-Upstream-Service-Time:
+      - '23'
+      Server:
+      - envoy
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"BQBrJ7tbHCmQkO54Umk57_R-JOrkE4MegEnD9b7nqsGRyA2DJ0jaf0YPe8qN5lbyl-gJA5ZEFfYlE8Ksq7srNw0c_9FbrBWKVatwmzQhVAoTYHfv7UBoDCeO697Gtu0DxUURnemeBPaDWrejjfYNqqLWtGABHzGghC1rSMUzxv-0cU0swb_C2e0B8GaPx2wrF4gpdFOfKru2RVIdy2jWQAllqbYCiPo","token_type":"Bearer","expires_in":3600,"scope":"user-library-modify
+        playlist-modify-public user-read-email"}'
+  recorded_at: Wed, 07 Jun 2023 00:33:34 GMT
+- request:
+    method: post
+    uri: https://api.spotify.com/v1/users/1281426323/playlists
+    body:
+      encoding: UTF-8
+      string: '{"name":"My Test Playlist"}'
+    headers:
+      Authorization:
+      - Bearer BQBrJ7tbHCmQkO54Umk57_R-JOrkE4MegEnD9b7nqsGRyA2DJ0jaf0YPe8qN5lbyl-gJA5ZEFfYlE8Ksq7srNw0c_9FbrBWKVatwmzQhVAoTYHfv7UBoDCeO697Gtu0DxUURnemeBPaDWrejjfYNqqLWtGABHzGghC1rSMUzxv-0cU0swb_C2e0B8GaPx2wrF4gpdFOfKru2RVIdy2jWQAllqbYCiPo
+      User-Agent:
+      - Faraday v2.7.5
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - private, max-age=0
+      Location:
+      - https://api.spotify.com/v1/playlists/39VElhndUuQow15hEqEelL
+      X-Robots-Tag:
+      - noindex, nofollow
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version,
+        X-Cloud-Trace-Context, client-token, content-access-token
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '604800'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 07 Jun 2023 00:33:34 GMT
+      Server:
+      - envoy
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "collaborative" : false,
+          "description" : null,
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/playlist/39VElhndUuQow15hEqEelL"
+          },
+          "followers" : {
+            "href" : null,
+            "total" : 0
+          },
+          "href" : "https://api.spotify.com/v1/playlists/39VElhndUuQow15hEqEelL",
+          "id" : "39VElhndUuQow15hEqEelL",
+          "images" : [ ],
+          "name" : "My Test Playlist",
+          "owner" : {
+            "display_name" : "Ollie",
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/user/1281426323"
+            },
+            "href" : "https://api.spotify.com/v1/users/1281426323",
+            "id" : "1281426323",
+            "type" : "user",
+            "uri" : "spotify:user:1281426323"
+          },
+          "primary_color" : null,
+          "public" : true,
+          "snapshot_id" : "MSw3OTY3ZDM2NmI4YzJjMTBmZjg4NjRmZDQ1MmQ2NzUyOGNlM2E4NTVh",
+          "tracks" : {
+            "href" : "https://api.spotify.com/v1/playlists/39VElhndUuQow15hEqEelL/tracks",
+            "items" : [ ],
+            "limit" : 100,
+            "next" : null,
+            "offset" : 0,
+            "previous" : null,
+            "total" : 0
+          },
+          "type" : "playlist",
+          "uri" : "spotify:playlist:39VElhndUuQow15hEqEelL"
+        }
+  recorded_at: Wed, 07 Jun 2023 00:33:35 GMT
+recorded_with: VCR 6.1.0

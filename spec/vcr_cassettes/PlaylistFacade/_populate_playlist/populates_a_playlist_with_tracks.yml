@@ -1,0 +1,1266 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts.spotify.com/api/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=refresh_token&refresh_token=<REFRESH_TOKEN>
+    headers:
+      User-Agent:
+      - Faraday v2.7.5
+      Authorization:
+      - Basic NTIwODc0ZDQzYjg5NGM4M2JhNzc4MTcxYWVhZDE2YTU6M2U4OTBhM2Q5Nzg1NDE5YThjOTFkOWU5Y2RmYmE0NTY=
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 07 Jun 2023 00:33:20 GMT
+      Content-Type:
+      - application/json
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - __Host-device_id=AQCwbAj-txT6PtdCW8yWjCE1rzjJQ-1UGuzE61CkLuppLpRRKLhtP1MmIN4GvrPMGUG3FDJm2UqKKNKqT-DsFhkeCwmB50B0Bfg;Version=1;Path=/;Max-Age=2147483647;Secure;HttpOnly;SameSite=Lax
+      - sp_tr=false;Version=1;Domain=accounts.spotify.com;Path=/;Secure;SameSite=Lax
+      Sp-Trace-Id:
+      - 8a6d4e406868bc26
+      X-Envoy-Upstream-Service-Time:
+      - '22'
+      Server:
+      - envoy
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"BQCMYe8uEr2MS9u5tqJRXaIKzU_Dy9mpkB7C8XlQqVp1qw2-q8vbJtoIRX42eu1c_HlD1R7m-eTayb6GdsDttLRldsbiv95636rHywjCpff8bxjlholoyVDrw7pWou3GhSfT5N6Yap9AOIb_uEWQ1xXhn_6UVyUHn-hxYmqSYSrEnZGJQMVqG6sksfv4PwBTGIAxWcUrGN-2nzpHDcCJLiq149dDntg","token_type":"Bearer","expires_in":3600,"scope":"user-library-modify
+        playlist-modify-public user-read-email"}'
+  recorded_at: Wed, 07 Jun 2023 00:33:20 GMT
+- request:
+    method: post
+    uri: https://accounts.spotify.com/api/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=refresh_token&refresh_token=<REFRESH_TOKEN>
+    headers:
+      User-Agent:
+      - Faraday v2.7.5
+      Authorization:
+      - Basic NTIwODc0ZDQzYjg5NGM4M2JhNzc4MTcxYWVhZDE2YTU6M2U4OTBhM2Q5Nzg1NDE5YThjOTFkOWU5Y2RmYmE0NTY=
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 07 Jun 2023 00:33:20 GMT
+      Content-Type:
+      - application/json
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - __Host-device_id=AQBmy4hA09UCruQ226kJ1jDY_xFrVmKf7YzI4V3j5ApQXUy9S-jAfjZRGsNGIUDc9IyNK3VZ-AcAb8F-mds5N5DntE_bGIAcljg;Version=1;Path=/;Max-Age=2147483647;Secure;HttpOnly;SameSite=Lax
+      - sp_tr=false;Version=1;Domain=accounts.spotify.com;Path=/;Secure;SameSite=Lax
+      Sp-Trace-Id:
+      - f307393662f758e2
+      X-Envoy-Upstream-Service-Time:
+      - '58'
+      Server:
+      - envoy
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"BQAHRunhy3dHNCXaziHL2-jC2NPbwk1WnUkfEBYQxBzeX3bTYfFw4q0iN7IWcYvLkD2zsj18vwjDTwEFP0-vZNbidXNEApHc3NcPw7sbS6vjYL7fNvsbEMWug8UVjI4pioEjHO3uaQtHpPslA5LSpGYBGeOKwzvhqdQj2slzw4whTrOgnQ4gCpBrZT9n3ETzaDXiXVlVM2hU2tZIGaT_HmLC9SaC96c","token_type":"Bearer","expires_in":3600,"scope":"user-library-modify
+        playlist-modify-public user-read-email"}'
+  recorded_at: Wed, 07 Jun 2023 00:33:20 GMT
+- request:
+    method: post
+    uri: https://api.spotify.com/v1/users/1281426323/playlists
+    body:
+      encoding: UTF-8
+      string: '{"name":"Facade Test Populated Playlist"}'
+    headers:
+      Authorization:
+      - Bearer BQCMYe8uEr2MS9u5tqJRXaIKzU_Dy9mpkB7C8XlQqVp1qw2-q8vbJtoIRX42eu1c_HlD1R7m-eTayb6GdsDttLRldsbiv95636rHywjCpff8bxjlholoyVDrw7pWou3GhSfT5N6Yap9AOIb_uEWQ1xXhn_6UVyUHn-hxYmqSYSrEnZGJQMVqG6sksfv4PwBTGIAxWcUrGN-2nzpHDcCJLiq149dDntg
+      User-Agent:
+      - Faraday v2.7.5
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - private, max-age=0
+      Location:
+      - https://api.spotify.com/v1/playlists/3EUY0ONWvSVTndWD8ij4HR
+      X-Robots-Tag:
+      - noindex, nofollow
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version,
+        X-Cloud-Trace-Context, client-token, content-access-token
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '604800'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 07 Jun 2023 00:33:20 GMT
+      Server:
+      - envoy
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "collaborative" : false,
+          "description" : null,
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/playlist/3EUY0ONWvSVTndWD8ij4HR"
+          },
+          "followers" : {
+            "href" : null,
+            "total" : 0
+          },
+          "href" : "https://api.spotify.com/v1/playlists/3EUY0ONWvSVTndWD8ij4HR",
+          "id" : "3EUY0ONWvSVTndWD8ij4HR",
+          "images" : [ ],
+          "name" : "Facade Test Populated Playlist",
+          "owner" : {
+            "display_name" : "Ollie",
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/user/1281426323"
+            },
+            "href" : "https://api.spotify.com/v1/users/1281426323",
+            "id" : "1281426323",
+            "type" : "user",
+            "uri" : "spotify:user:1281426323"
+          },
+          "primary_color" : null,
+          "public" : true,
+          "snapshot_id" : "MSw3Mjc5NjM0ZTZiMTlkMWFkOWM5YTA4NTUyZWI2OTdiODgyNWZmNjc2",
+          "tracks" : {
+            "href" : "https://api.spotify.com/v1/playlists/3EUY0ONWvSVTndWD8ij4HR/tracks",
+            "items" : [ ],
+            "limit" : 100,
+            "next" : null,
+            "offset" : 0,
+            "previous" : null,
+            "total" : 0
+          },
+          "type" : "playlist",
+          "uri" : "spotify:playlist:3EUY0ONWvSVTndWD8ij4HR"
+        }
+  recorded_at: Wed, 07 Jun 2023 00:33:21 GMT
+- request:
+    method: get
+    uri: https://api.spotify.com/v1/recommendations?limit=10&market=US&seed_artists=2h93pZq0e7k5yf4dywlkpM&seed_genres=pop,rock&seed_tracks=0Svkvt5I79wficMFgaqEQJ,7lQ8MOhq6IN2w8EYcFNSUk
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer BQCMYe8uEr2MS9u5tqJRXaIKzU_Dy9mpkB7C8XlQqVp1qw2-q8vbJtoIRX42eu1c_HlD1R7m-eTayb6GdsDttLRldsbiv95636rHywjCpff8bxjlholoyVDrw7pWou3GhSfT5N6Yap9AOIb_uEWQ1xXhn_6UVyUHn-hxYmqSYSrEnZGJQMVqG6sksfv4PwBTGIAxWcUrGN-2nzpHDcCJLiq149dDntg
+      User-Agent:
+      - Faraday v2.7.5
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - private, max-age=0
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version,
+        X-Cloud-Trace-Context, client-token, content-access-token
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '604800'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 07 Jun 2023 00:33:21 GMT
+      Server:
+      - envoy
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "tracks" : [ {
+            "album" : {
+              "album_group" : "ALBUM",
+              "album_type" : "ALBUM",
+              "artists" : [ {
+                "external_urls" : {
+                  "spotify" : "https://open.spotify.com/artist/6FBDaR13swtiWwGhX1WQsP"
+                },
+                "href" : "https://api.spotify.com/v1/artists/6FBDaR13swtiWwGhX1WQsP",
+                "id" : "6FBDaR13swtiWwGhX1WQsP",
+                "name" : "blink-182",
+                "type" : "artist",
+                "uri" : "spotify:artist:6FBDaR13swtiWwGhX1WQsP"
+              } ],
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/album/6DMUAqxiFfLdqXv0vqcrQA"
+              },
+              "href" : "https://api.spotify.com/v1/albums/6DMUAqxiFfLdqXv0vqcrQA",
+              "id" : "6DMUAqxiFfLdqXv0vqcrQA",
+              "images" : [ {
+                "height" : 640,
+                "url" : "https://i.scdn.co/image/ab67616d0000b2730a4ae12eb3a9fb7e3815001c",
+                "width" : 640
+              }, {
+                "height" : 300,
+                "url" : "https://i.scdn.co/image/ab67616d00001e020a4ae12eb3a9fb7e3815001c",
+                "width" : 300
+              }, {
+                "height" : 64,
+                "url" : "https://i.scdn.co/image/ab67616d000048510a4ae12eb3a9fb7e3815001c",
+                "width" : 64
+              } ],
+              "is_playable" : true,
+              "name" : "blink-182",
+              "release_date" : "2003-01-01",
+              "release_date_precision" : "day",
+              "total_tracks" : 15,
+              "type" : "album",
+              "uri" : "spotify:album:6DMUAqxiFfLdqXv0vqcrQA"
+            },
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/6FBDaR13swtiWwGhX1WQsP"
+              },
+              "href" : "https://api.spotify.com/v1/artists/6FBDaR13swtiWwGhX1WQsP",
+              "id" : "6FBDaR13swtiWwGhX1WQsP",
+              "name" : "blink-182",
+              "type" : "artist",
+              "uri" : "spotify:artist:6FBDaR13swtiWwGhX1WQsP"
+            } ],
+            "disc_number" : 1,
+            "duration_ms" : 227240,
+            "explicit" : false,
+            "external_ids" : {
+              "isrc" : "USMC10346123"
+            },
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/track/1oTo3ijRbaDAtrjJrGAPSw"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/1oTo3ijRbaDAtrjJrGAPSw",
+            "id" : "1oTo3ijRbaDAtrjJrGAPSw",
+            "is_local" : false,
+            "is_playable" : true,
+            "name" : "I Miss You",
+            "popularity" : 73,
+            "preview_url" : null,
+            "track_number" : 3,
+            "type" : "track",
+            "uri" : "spotify:track:1oTo3ijRbaDAtrjJrGAPSw"
+          }, {
+            "album" : {
+              "album_group" : "ALBUM",
+              "album_type" : "ALBUM",
+              "artists" : [ {
+                "external_urls" : {
+                  "spotify" : "https://open.spotify.com/artist/2rtsR8zno5naTxY0iJr7M0"
+                },
+                "href" : "https://api.spotify.com/v1/artists/2rtsR8zno5naTxY0iJr7M0",
+                "id" : "2rtsR8zno5naTxY0iJr7M0",
+                "name" : "Hundredth",
+                "type" : "artist",
+                "uri" : "spotify:artist:2rtsR8zno5naTxY0iJr7M0"
+              } ],
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/album/6HZ8ACXr1OOiAmkq7mNn4h"
+              },
+              "href" : "https://api.spotify.com/v1/albums/6HZ8ACXr1OOiAmkq7mNn4h",
+              "id" : "6HZ8ACXr1OOiAmkq7mNn4h",
+              "images" : [ {
+                "height" : 640,
+                "url" : "https://i.scdn.co/image/ab67616d0000b2731721d3644dbd9aeb105f3733",
+                "width" : 640
+              }, {
+                "height" : 300,
+                "url" : "https://i.scdn.co/image/ab67616d00001e021721d3644dbd9aeb105f3733",
+                "width" : 300
+              }, {
+                "height" : 64,
+                "url" : "https://i.scdn.co/image/ab67616d000048511721d3644dbd9aeb105f3733",
+                "width" : 64
+              } ],
+              "is_playable" : true,
+              "name" : "RARE",
+              "release_date" : "2017-06-16",
+              "release_date_precision" : "day",
+              "total_tracks" : 12,
+              "type" : "album",
+              "uri" : "spotify:album:6HZ8ACXr1OOiAmkq7mNn4h"
+            },
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/2rtsR8zno5naTxY0iJr7M0"
+              },
+              "href" : "https://api.spotify.com/v1/artists/2rtsR8zno5naTxY0iJr7M0",
+              "id" : "2rtsR8zno5naTxY0iJr7M0",
+              "name" : "Hundredth",
+              "type" : "artist",
+              "uri" : "spotify:artist:2rtsR8zno5naTxY0iJr7M0"
+            } ],
+            "disc_number" : 1,
+            "duration_ms" : 210480,
+            "explicit" : false,
+            "external_ids" : {
+              "isrc" : "USHR21790011"
+            },
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/track/6GgUYuCp1Gac8ECGODmL7R"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/6GgUYuCp1Gac8ECGODmL7R",
+            "id" : "6GgUYuCp1Gac8ECGODmL7R",
+            "is_local" : false,
+            "is_playable" : true,
+            "linked_from" : {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/track/1CF426318xBsb8ZaGrP94H"
+              },
+              "href" : "https://api.spotify.com/v1/tracks/1CF426318xBsb8ZaGrP94H",
+              "id" : "1CF426318xBsb8ZaGrP94H",
+              "type" : "track",
+              "uri" : "spotify:track:1CF426318xBsb8ZaGrP94H"
+            },
+            "name" : "Youth",
+            "popularity" : 38,
+            "preview_url" : "https://p.scdn.co/mp3-preview/171beccc0d32643b9abf5a9336dcdb7917191ee0?cid=520874d43b894c83ba778171aead16a5",
+            "track_number" : 11,
+            "type" : "track",
+            "uri" : "spotify:track:6GgUYuCp1Gac8ECGODmL7R"
+          }, {
+            "album" : {
+              "album_group" : "ALBUM",
+              "album_type" : "ALBUM",
+              "artists" : [ {
+                "external_urls" : {
+                  "spotify" : "https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x"
+                },
+                "href" : "https://api.spotify.com/v1/artists/5K4W6rqBFWDnAN6FQUkS6x",
+                "id" : "5K4W6rqBFWDnAN6FQUkS6x",
+                "name" : "Kanye West",
+                "type" : "artist",
+                "uri" : "spotify:artist:5K4W6rqBFWDnAN6FQUkS6x"
+              } ],
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/album/4SZko61aMnmgvNhfhgTuD3"
+              },
+              "href" : "https://api.spotify.com/v1/albums/4SZko61aMnmgvNhfhgTuD3",
+              "id" : "4SZko61aMnmgvNhfhgTuD3",
+              "images" : [ {
+                "height" : 640,
+                "url" : "https://i.scdn.co/image/ab67616d0000b27326f7f19c7f0381e56156c94a",
+                "width" : 640
+              }, {
+                "height" : 300,
+                "url" : "https://i.scdn.co/image/ab67616d00001e0226f7f19c7f0381e56156c94a",
+                "width" : 300
+              }, {
+                "height" : 64,
+                "url" : "https://i.scdn.co/image/ab67616d0000485126f7f19c7f0381e56156c94a",
+                "width" : 64
+              } ],
+              "is_playable" : true,
+              "name" : "Graduation",
+              "release_date" : "2007-09-11",
+              "release_date_precision" : "day",
+              "total_tracks" : 14,
+              "type" : "album",
+              "uri" : "spotify:album:4SZko61aMnmgvNhfhgTuD3"
+            },
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x"
+              },
+              "href" : "https://api.spotify.com/v1/artists/5K4W6rqBFWDnAN6FQUkS6x",
+              "id" : "5K4W6rqBFWDnAN6FQUkS6x",
+              "name" : "Kanye West",
+              "type" : "artist",
+              "uri" : "spotify:artist:5K4W6rqBFWDnAN6FQUkS6x"
+            } ],
+            "disc_number" : 1,
+            "duration_ms" : 311866,
+            "explicit" : true,
+            "external_ids" : {
+              "isrc" : "USUM70741299"
+            },
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/track/0j2T0R9dR9qdJYsB7ciXhf"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/0j2T0R9dR9qdJYsB7ciXhf",
+            "id" : "0j2T0R9dR9qdJYsB7ciXhf",
+            "is_local" : false,
+            "is_playable" : true,
+            "name" : "Stronger",
+            "popularity" : 83,
+            "preview_url" : null,
+            "track_number" : 3,
+            "type" : "track",
+            "uri" : "spotify:track:0j2T0R9dR9qdJYsB7ciXhf"
+          }, {
+            "album" : {
+              "album_group" : "ALBUM",
+              "album_type" : "ALBUM",
+              "artists" : [ {
+                "external_urls" : {
+                  "spotify" : "https://open.spotify.com/artist/63yrD80RY3RNEM2YDpUpO8"
+                },
+                "href" : "https://api.spotify.com/v1/artists/63yrD80RY3RNEM2YDpUpO8",
+                "id" : "63yrD80RY3RNEM2YDpUpO8",
+                "name" : "Melanie Martinez",
+                "type" : "artist",
+                "uri" : "spotify:artist:63yrD80RY3RNEM2YDpUpO8"
+              } ],
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/album/5JpH5T1sCYnUyZD6TM0QaY"
+              },
+              "href" : "https://api.spotify.com/v1/albums/5JpH5T1sCYnUyZD6TM0QaY",
+              "id" : "5JpH5T1sCYnUyZD6TM0QaY",
+              "images" : [ {
+                "height" : 640,
+                "url" : "https://i.scdn.co/image/ab67616d0000b2733899712512f50a8d9e01e951",
+                "width" : 640
+              }, {
+                "height" : 300,
+                "url" : "https://i.scdn.co/image/ab67616d00001e023899712512f50a8d9e01e951",
+                "width" : 300
+              }, {
+                "height" : 64,
+                "url" : "https://i.scdn.co/image/ab67616d000048513899712512f50a8d9e01e951",
+                "width" : 64
+              } ],
+              "is_playable" : true,
+              "name" : "Cry Baby (Deluxe Edition)",
+              "release_date" : "2015-08-14",
+              "release_date_precision" : "day",
+              "total_tracks" : 16,
+              "type" : "album",
+              "uri" : "spotify:album:5JpH5T1sCYnUyZD6TM0QaY"
+            },
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/63yrD80RY3RNEM2YDpUpO8"
+              },
+              "href" : "https://api.spotify.com/v1/artists/63yrD80RY3RNEM2YDpUpO8",
+              "id" : "63yrD80RY3RNEM2YDpUpO8",
+              "name" : "Melanie Martinez",
+              "type" : "artist",
+              "uri" : "spotify:artist:63yrD80RY3RNEM2YDpUpO8"
+            } ],
+            "disc_number" : 1,
+            "duration_ms" : 231853,
+            "explicit" : false,
+            "external_ids" : {
+              "isrc" : "USAT21401604"
+            },
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/track/6wNeKPXF0RDKyvfKfri5hf"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/6wNeKPXF0RDKyvfKfri5hf",
+            "id" : "6wNeKPXF0RDKyvfKfri5hf",
+            "is_local" : false,
+            "is_playable" : true,
+            "name" : "Dollhouse",
+            "popularity" : 77,
+            "preview_url" : "https://p.scdn.co/mp3-preview/554c48d779027eebd5bd8fe4cd866390b7c66203?cid=520874d43b894c83ba778171aead16a5",
+            "track_number" : 2,
+            "type" : "track",
+            "uri" : "spotify:track:6wNeKPXF0RDKyvfKfri5hf"
+          }, {
+            "album" : {
+              "album_group" : "ALBUM",
+              "album_type" : "ALBUM",
+              "artists" : [ {
+                "external_urls" : {
+                  "spotify" : "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+                },
+                "href" : "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+                "id" : "7dGJo4pcD2V6oG8kP0tJRR",
+                "name" : "Eminem",
+                "type" : "artist",
+                "uri" : "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+              } ],
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/album/47BiFcV59TQi2s9SkBo2pb"
+              },
+              "href" : "https://api.spotify.com/v1/albums/47BiFcV59TQi2s9SkBo2pb",
+              "id" : "47BiFcV59TQi2s9SkBo2pb",
+              "images" : [ {
+                "height" : 640,
+                "url" : "https://i.scdn.co/image/ab67616d0000b273c08d5fa5c0f1a834acef5100",
+                "width" : 640
+              }, {
+                "height" : 300,
+                "url" : "https://i.scdn.co/image/ab67616d00001e02c08d5fa5c0f1a834acef5100",
+                "width" : 300
+              }, {
+                "height" : 64,
+                "url" : "https://i.scdn.co/image/ab67616d00004851c08d5fa5c0f1a834acef5100",
+                "width" : 64
+              } ],
+              "is_playable" : true,
+              "name" : "Recovery",
+              "release_date" : "2010-06-18",
+              "release_date_precision" : "day",
+              "total_tracks" : 17,
+              "type" : "album",
+              "uri" : "spotify:album:47BiFcV59TQi2s9SkBo2pb"
+            },
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+              },
+              "href" : "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+              "id" : "7dGJo4pcD2V6oG8kP0tJRR",
+              "name" : "Eminem",
+              "type" : "artist",
+              "uri" : "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+            } ],
+            "disc_number" : 1,
+            "duration_ms" : 279013,
+            "explicit" : true,
+            "external_ids" : {
+              "isrc" : "USUM71015394"
+            },
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/track/4SE4yewyGpOYfxfx59Yjc5"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/4SE4yewyGpOYfxfx59Yjc5",
+            "id" : "4SE4yewyGpOYfxfx59Yjc5",
+            "is_local" : false,
+            "is_playable" : true,
+            "name" : "Cinderella Man",
+            "popularity" : 72,
+            "preview_url" : null,
+            "track_number" : 11,
+            "type" : "track",
+            "uri" : "spotify:track:4SE4yewyGpOYfxfx59Yjc5"
+          }, {
+            "album" : {
+              "album_group" : "ALBUM",
+              "album_type" : "ALBUM",
+              "artists" : [ {
+                "external_urls" : {
+                  "spotify" : "https://open.spotify.com/artist/1URnnhqYAYcrqrcwql10ft"
+                },
+                "href" : "https://api.spotify.com/v1/artists/1URnnhqYAYcrqrcwql10ft",
+                "id" : "1URnnhqYAYcrqrcwql10ft",
+                "name" : "21 Savage",
+                "type" : "artist",
+                "uri" : "spotify:artist:1URnnhqYAYcrqrcwql10ft"
+              } ],
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/album/007DWn799UWvfY1wwZeENR"
+              },
+              "href" : "https://api.spotify.com/v1/albums/007DWn799UWvfY1wwZeENR",
+              "id" : "007DWn799UWvfY1wwZeENR",
+              "images" : [ {
+                "height" : 640,
+                "url" : "https://i.scdn.co/image/ab67616d0000b273280689ecc5e4b2038bb5e4bd",
+                "width" : 640
+              }, {
+                "height" : 300,
+                "url" : "https://i.scdn.co/image/ab67616d00001e02280689ecc5e4b2038bb5e4bd",
+                "width" : 300
+              }, {
+                "height" : 64,
+                "url" : "https://i.scdn.co/image/ab67616d00004851280689ecc5e4b2038bb5e4bd",
+                "width" : 64
+              } ],
+              "is_playable" : true,
+              "name" : "i am > i was",
+              "release_date" : "2018-12-21",
+              "release_date_precision" : "day",
+              "total_tracks" : 15,
+              "type" : "album",
+              "uri" : "spotify:album:007DWn799UWvfY1wwZeENR"
+            },
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/1URnnhqYAYcrqrcwql10ft"
+              },
+              "href" : "https://api.spotify.com/v1/artists/1URnnhqYAYcrqrcwql10ft",
+              "id" : "1URnnhqYAYcrqrcwql10ft",
+              "name" : "21 Savage",
+              "type" : "artist",
+              "uri" : "spotify:artist:1URnnhqYAYcrqrcwql10ft"
+            } ],
+            "disc_number" : 1,
+            "duration_ms" : 195046,
+            "explicit" : true,
+            "external_ids" : {
+              "isrc" : "QZ45A1700093"
+            },
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/track/50a8bKqlwDEqeiEknrzkTO"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/50a8bKqlwDEqeiEknrzkTO",
+            "id" : "50a8bKqlwDEqeiEknrzkTO",
+            "is_local" : false,
+            "is_playable" : true,
+            "name" : "ball w/o you",
+            "popularity" : 83,
+            "preview_url" : "https://p.scdn.co/mp3-preview/29092f27b687647064cb116289ac78ab2c4a2118?cid=520874d43b894c83ba778171aead16a5",
+            "track_number" : 10,
+            "type" : "track",
+            "uri" : "spotify:track:50a8bKqlwDEqeiEknrzkTO"
+          }, {
+            "album" : {
+              "album_group" : "ALBUM",
+              "album_type" : "ALBUM",
+              "artists" : [ {
+                "external_urls" : {
+                  "spotify" : "https://open.spotify.com/artist/2iojnBLj0qIMiKPvVhLnsH"
+                },
+                "href" : "https://api.spotify.com/v1/artists/2iojnBLj0qIMiKPvVhLnsH",
+                "id" : "2iojnBLj0qIMiKPvVhLnsH",
+                "name" : "Trey Songz",
+                "type" : "artist",
+                "uri" : "spotify:artist:2iojnBLj0qIMiKPvVhLnsH"
+              } ],
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/album/3pKTKC0AAe3yTcXQLzvpSW"
+              },
+              "href" : "https://api.spotify.com/v1/albums/3pKTKC0AAe3yTcXQLzvpSW",
+              "id" : "3pKTKC0AAe3yTcXQLzvpSW",
+              "images" : [ {
+                "height" : 640,
+                "url" : "https://i.scdn.co/image/ab67616d0000b273e04293bed7a0440e3eea2de1",
+                "width" : 640
+              }, {
+                "height" : 300,
+                "url" : "https://i.scdn.co/image/ab67616d00001e02e04293bed7a0440e3eea2de1",
+                "width" : 300
+              }, {
+                "height" : 64,
+                "url" : "https://i.scdn.co/image/ab67616d00004851e04293bed7a0440e3eea2de1",
+                "width" : 64
+              } ],
+              "is_playable" : true,
+              "name" : "Trigga Reloaded",
+              "release_date" : "2015-06-23",
+              "release_date_precision" : "day",
+              "total_tracks" : 18,
+              "type" : "album",
+              "uri" : "spotify:album:3pKTKC0AAe3yTcXQLzvpSW"
+            },
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/2iojnBLj0qIMiKPvVhLnsH"
+              },
+              "href" : "https://api.spotify.com/v1/artists/2iojnBLj0qIMiKPvVhLnsH",
+              "id" : "2iojnBLj0qIMiKPvVhLnsH",
+              "name" : "Trey Songz",
+              "type" : "artist",
+              "uri" : "spotify:artist:2iojnBLj0qIMiKPvVhLnsH"
+            } ],
+            "disc_number" : 1,
+            "duration_ms" : 197854,
+            "explicit" : false,
+            "external_ids" : {
+              "isrc" : "USAT21405436"
+            },
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/track/4NYwy0R3NdvORX2B6OZXBT"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/4NYwy0R3NdvORX2B6OZXBT",
+            "id" : "4NYwy0R3NdvORX2B6OZXBT",
+            "is_local" : false,
+            "is_playable" : true,
+            "name" : "Slow Motion",
+            "popularity" : 70,
+            "preview_url" : "https://p.scdn.co/mp3-preview/e12dd576fd9e9ab49adc07819c188dbc6ea45576?cid=520874d43b894c83ba778171aead16a5",
+            "track_number" : 2,
+            "type" : "track",
+            "uri" : "spotify:track:4NYwy0R3NdvORX2B6OZXBT"
+          }, {
+            "album" : {
+              "album_group" : "ALBUM",
+              "album_type" : "ALBUM",
+              "artists" : [ {
+                "external_urls" : {
+                  "spotify" : "https://open.spotify.com/artist/13ubrt8QOOCPljQ2FL1Kca"
+                },
+                "href" : "https://api.spotify.com/v1/artists/13ubrt8QOOCPljQ2FL1Kca",
+                "id" : "13ubrt8QOOCPljQ2FL1Kca",
+                "name" : "A$AP Rocky",
+                "type" : "artist",
+                "uri" : "spotify:artist:13ubrt8QOOCPljQ2FL1Kca"
+              } ],
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/album/3MATDdrpHmQCmuOcozZjDa"
+              },
+              "href" : "https://api.spotify.com/v1/albums/3MATDdrpHmQCmuOcozZjDa",
+              "id" : "3MATDdrpHmQCmuOcozZjDa",
+              "images" : [ {
+                "height" : 640,
+                "url" : "https://i.scdn.co/image/ab67616d0000b2739feadc48ab0661e9b3a9170b",
+                "width" : 640
+              }, {
+                "height" : 300,
+                "url" : "https://i.scdn.co/image/ab67616d00001e029feadc48ab0661e9b3a9170b",
+                "width" : 300
+              }, {
+                "height" : 64,
+                "url" : "https://i.scdn.co/image/ab67616d000048519feadc48ab0661e9b3a9170b",
+                "width" : 64
+              } ],
+              "is_playable" : true,
+              "name" : "TESTING",
+              "release_date" : "2018-05-25",
+              "release_date_precision" : "day",
+              "total_tracks" : 15,
+              "type" : "album",
+              "uri" : "spotify:album:3MATDdrpHmQCmuOcozZjDa"
+            },
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/13ubrt8QOOCPljQ2FL1Kca"
+              },
+              "href" : "https://api.spotify.com/v1/artists/13ubrt8QOOCPljQ2FL1Kca",
+              "id" : "13ubrt8QOOCPljQ2FL1Kca",
+              "name" : "A$AP Rocky",
+              "type" : "artist",
+              "uri" : "spotify:artist:13ubrt8QOOCPljQ2FL1Kca"
+            }, {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/2h93pZq0e7k5yf4dywlkpM"
+              },
+              "href" : "https://api.spotify.com/v1/artists/2h93pZq0e7k5yf4dywlkpM",
+              "id" : "2h93pZq0e7k5yf4dywlkpM",
+              "name" : "Frank Ocean",
+              "type" : "artist",
+              "uri" : "spotify:artist:2h93pZq0e7k5yf4dywlkpM"
+            } ],
+            "disc_number" : 1,
+            "duration_ms" : 262360,
+            "explicit" : true,
+            "external_ids" : {
+              "isrc" : "USRC11801946"
+            },
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/track/2MF4HtZHBoUliOi9nOAbS0"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/2MF4HtZHBoUliOi9nOAbS0",
+            "id" : "2MF4HtZHBoUliOi9nOAbS0",
+            "is_local" : false,
+            "is_playable" : true,
+            "name" : "Purity (feat. Frank Ocean)",
+            "popularity" : 68,
+            "preview_url" : "https://p.scdn.co/mp3-preview/c0862a1da7b10728ac3bdcbc320da03113f19ea3?cid=520874d43b894c83ba778171aead16a5",
+            "track_number" : 15,
+            "type" : "track",
+            "uri" : "spotify:track:2MF4HtZHBoUliOi9nOAbS0"
+          }, {
+            "album" : {
+              "album_group" : "ALBUM",
+              "album_type" : "ALBUM",
+              "artists" : [ {
+                "external_urls" : {
+                  "spotify" : "https://open.spotify.com/artist/5pKCCKE2ajJHZ9KAiaK11H"
+                },
+                "href" : "https://api.spotify.com/v1/artists/5pKCCKE2ajJHZ9KAiaK11H",
+                "id" : "5pKCCKE2ajJHZ9KAiaK11H",
+                "name" : "Rihanna",
+                "type" : "artist",
+                "uri" : "spotify:artist:5pKCCKE2ajJHZ9KAiaK11H"
+              } ],
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/album/3Q149ZH46Z0f3oDR7vlDYV"
+              },
+              "href" : "https://api.spotify.com/v1/albums/3Q149ZH46Z0f3oDR7vlDYV",
+              "id" : "3Q149ZH46Z0f3oDR7vlDYV",
+              "images" : [ {
+                "height" : 640,
+                "url" : "https://i.scdn.co/image/ab67616d0000b27333de8537b313380d4f4c3ca6",
+                "width" : 640
+              }, {
+                "height" : 300,
+                "url" : "https://i.scdn.co/image/ab67616d00001e0233de8537b313380d4f4c3ca6",
+                "width" : 300
+              }, {
+                "height" : 64,
+                "url" : "https://i.scdn.co/image/ab67616d0000485133de8537b313380d4f4c3ca6",
+                "width" : 64
+              } ],
+              "is_playable" : true,
+              "name" : "ANTI",
+              "release_date" : "2016-01-28",
+              "release_date_precision" : "day",
+              "total_tracks" : 13,
+              "type" : "album",
+              "uri" : "spotify:album:3Q149ZH46Z0f3oDR7vlDYV"
+            },
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/5pKCCKE2ajJHZ9KAiaK11H"
+              },
+              "href" : "https://api.spotify.com/v1/artists/5pKCCKE2ajJHZ9KAiaK11H",
+              "id" : "5pKCCKE2ajJHZ9KAiaK11H",
+              "name" : "Rihanna",
+              "type" : "artist",
+              "uri" : "spotify:artist:5pKCCKE2ajJHZ9KAiaK11H"
+            }, {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/3TVXtAsR1Inumwj472S9r4"
+              },
+              "href" : "https://api.spotify.com/v1/artists/3TVXtAsR1Inumwj472S9r4",
+              "id" : "3TVXtAsR1Inumwj472S9r4",
+              "name" : "Drake",
+              "type" : "artist",
+              "uri" : "spotify:artist:3TVXtAsR1Inumwj472S9r4"
+            } ],
+            "disc_number" : 1,
+            "duration_ms" : 219320,
+            "explicit" : true,
+            "external_ids" : {
+              "isrc" : "QM5FT1600116"
+            },
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/track/72TFWvU3wUYdUuxejTTIzt"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/72TFWvU3wUYdUuxejTTIzt",
+            "id" : "72TFWvU3wUYdUuxejTTIzt",
+            "is_local" : false,
+            "is_playable" : true,
+            "linked_from" : {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/track/32lmL4vQAAotg6MrJnhlQZ"
+              },
+              "href" : "https://api.spotify.com/v1/tracks/32lmL4vQAAotg6MrJnhlQZ",
+              "id" : "32lmL4vQAAotg6MrJnhlQZ",
+              "type" : "track",
+              "uri" : "spotify:track:32lmL4vQAAotg6MrJnhlQZ"
+            },
+            "name" : "Work",
+            "popularity" : 80,
+            "preview_url" : null,
+            "track_number" : 4,
+            "type" : "track",
+            "uri" : "spotify:track:72TFWvU3wUYdUuxejTTIzt"
+          }, {
+            "album" : {
+              "album_group" : "ALBUM",
+              "album_type" : "ALBUM",
+              "artists" : [ {
+                "external_urls" : {
+                  "spotify" : "https://open.spotify.com/artist/67nwj3Y5sZQLl72VNUHEYE"
+                },
+                "href" : "https://api.spotify.com/v1/artists/67nwj3Y5sZQLl72VNUHEYE",
+                "id" : "67nwj3Y5sZQLl72VNUHEYE",
+                "name" : "Wale",
+                "type" : "artist",
+                "uri" : "spotify:artist:67nwj3Y5sZQLl72VNUHEYE"
+              } ],
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/album/3X1Ljgkvf2cLwi8mMjhvKy"
+              },
+              "href" : "https://api.spotify.com/v1/albums/3X1Ljgkvf2cLwi8mMjhvKy",
+              "id" : "3X1Ljgkvf2cLwi8mMjhvKy",
+              "images" : [ {
+                "height" : 640,
+                "url" : "https://i.scdn.co/image/ab67616d0000b273ef23be59c0cdd6ed36a54c65",
+                "width" : 640
+              }, {
+                "height" : 300,
+                "url" : "https://i.scdn.co/image/ab67616d00001e02ef23be59c0cdd6ed36a54c65",
+                "width" : 300
+              }, {
+                "height" : 64,
+                "url" : "https://i.scdn.co/image/ab67616d00004851ef23be59c0cdd6ed36a54c65",
+                "width" : 64
+              } ],
+              "is_playable" : true,
+              "name" : "Shine",
+              "release_date" : "2017-04-28",
+              "release_date_precision" : "day",
+              "total_tracks" : 14,
+              "type" : "album",
+              "uri" : "spotify:album:3X1Ljgkvf2cLwi8mMjhvKy"
+            },
+            "artists" : [ {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/67nwj3Y5sZQLl72VNUHEYE"
+              },
+              "href" : "https://api.spotify.com/v1/artists/67nwj3Y5sZQLl72VNUHEYE",
+              "id" : "67nwj3Y5sZQLl72VNUHEYE",
+              "name" : "Wale",
+              "type" : "artist",
+              "uri" : "spotify:artist:67nwj3Y5sZQLl72VNUHEYE"
+            }, {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/738wLrAtLtCtFOLvQBXOXp"
+              },
+              "href" : "https://api.spotify.com/v1/artists/738wLrAtLtCtFOLvQBXOXp",
+              "id" : "738wLrAtLtCtFOLvQBXOXp",
+              "name" : "Major Lazer",
+              "type" : "artist",
+              "uri" : "spotify:artist:738wLrAtLtCtFOLvQBXOXp"
+            }, {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/3tVQdUvClmAT7URs9V3rsp"
+              },
+              "href" : "https://api.spotify.com/v1/artists/3tVQdUvClmAT7URs9V3rsp",
+              "id" : "3tVQdUvClmAT7URs9V3rsp",
+              "name" : "Wizkid",
+              "type" : "artist",
+              "uri" : "spotify:artist:3tVQdUvClmAT7URs9V3rsp"
+            }, {
+              "external_urls" : {
+                "spotify" : "https://open.spotify.com/artist/6M2wZ9GZgrQXHCFfjv46we"
+              },
+              "href" : "https://api.spotify.com/v1/artists/6M2wZ9GZgrQXHCFfjv46we",
+              "id" : "6M2wZ9GZgrQXHCFfjv46we",
+              "name" : "Dua Lipa",
+              "type" : "artist",
+              "uri" : "spotify:artist:6M2wZ9GZgrQXHCFfjv46we"
+            } ],
+            "disc_number" : 1,
+            "duration_ms" : 228706,
+            "explicit" : false,
+            "external_ids" : {
+              "isrc" : "USAT21700887"
+            },
+            "external_urls" : {
+              "spotify" : "https://open.spotify.com/track/7rfiXyFb5M9BqdkvKvVEiB"
+            },
+            "href" : "https://api.spotify.com/v1/tracks/7rfiXyFb5M9BqdkvKvVEiB",
+            "id" : "7rfiXyFb5M9BqdkvKvVEiB",
+            "is_local" : false,
+            "is_playable" : true,
+            "name" : "My Love (feat. Major Lazer, WizKid, Dua Lipa)",
+            "popularity" : 60,
+            "preview_url" : "https://p.scdn.co/mp3-preview/d4b5fab143799f94353af50c33ffe91aac3ba189?cid=520874d43b894c83ba778171aead16a5",
+            "track_number" : 4,
+            "type" : "track",
+            "uri" : "spotify:track:7rfiXyFb5M9BqdkvKvVEiB"
+          } ],
+          "seeds" : [ {
+            "initialPoolSize" : 254,
+            "afterFilteringSize" : 254,
+            "afterRelinkingSize" : 254,
+            "id" : "2h93pZq0e7k5yf4dywlkpM",
+            "type" : "ARTIST",
+            "href" : "https://api.spotify.com/v1/artists/2h93pZq0e7k5yf4dywlkpM"
+          }, {
+            "initialPoolSize" : 273,
+            "afterFilteringSize" : 273,
+            "afterRelinkingSize" : 273,
+            "id" : "0Svkvt5I79wficMFgaqEQJ",
+            "type" : "TRACK",
+            "href" : "https://api.spotify.com/v1/tracks/0Svkvt5I79wficMFgaqEQJ"
+          }, {
+            "initialPoolSize" : 287,
+            "afterFilteringSize" : 287,
+            "afterRelinkingSize" : 287,
+            "id" : "7lQ8MOhq6IN2w8EYcFNSUk",
+            "type" : "TRACK",
+            "href" : "https://api.spotify.com/v1/tracks/7lQ8MOhq6IN2w8EYcFNSUk"
+          }, {
+            "initialPoolSize" : 330,
+            "afterFilteringSize" : 330,
+            "afterRelinkingSize" : 330,
+            "id" : "pop",
+            "type" : "GENRE",
+            "href" : null
+          }, {
+            "initialPoolSize" : 338,
+            "afterFilteringSize" : 338,
+            "afterRelinkingSize" : 338,
+            "id" : "rock",
+            "type" : "GENRE",
+            "href" : null
+          } ]
+        }
+  recorded_at: Wed, 07 Jun 2023 00:33:21 GMT
+- request:
+    method: post
+    uri: https://api.spotify.com/v1/playlists/3EUY0ONWvSVTndWD8ij4HR/tracks
+    body:
+      encoding: UTF-8
+      string: '{"uris":["spotify:track:1oTo3ijRbaDAtrjJrGAPSw","spotify:track:6GgUYuCp1Gac8ECGODmL7R","spotify:track:0j2T0R9dR9qdJYsB7ciXhf","spotify:track:6wNeKPXF0RDKyvfKfri5hf","spotify:track:4SE4yewyGpOYfxfx59Yjc5","spotify:track:50a8bKqlwDEqeiEknrzkTO","spotify:track:4NYwy0R3NdvORX2B6OZXBT","spotify:track:2MF4HtZHBoUliOi9nOAbS0","spotify:track:72TFWvU3wUYdUuxejTTIzt","spotify:track:7rfiXyFb5M9BqdkvKvVEiB"],"position":0}'
+    headers:
+      Authorization:
+      - Bearer BQCMYe8uEr2MS9u5tqJRXaIKzU_Dy9mpkB7C8XlQqVp1qw2-q8vbJtoIRX42eu1c_HlD1R7m-eTayb6GdsDttLRldsbiv95636rHywjCpff8bxjlholoyVDrw7pWou3GhSfT5N6Yap9AOIb_uEWQ1xXhn_6UVyUHn-hxYmqSYSrEnZGJQMVqG6sksfv4PwBTGIAxWcUrGN-2nzpHDcCJLiq149dDntg
+      User-Agent:
+      - Faraday v2.7.5
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - private, max-age=0
+      X-Robots-Tag:
+      - noindex, nofollow
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version,
+        X-Cloud-Trace-Context, client-token, content-access-token
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '604800'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 07 Jun 2023 00:33:21 GMT
+      Server:
+      - envoy
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "snapshot_id" : "Miw2OTFiOGE0OGE2Y2I3ZGI0ODdmY2NhMGFlZTljYmYxZTlhZmYzMzQx"
+        }
+  recorded_at: Wed, 07 Jun 2023 00:33:21 GMT
+- request:
+    method: get
+    uri: https://api.spotify.com/v1/playlists/3EUY0ONWvSVTndWD8ij4HR?fields=name,id,tracks.items(track(name,href,album(name,href)))
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer BQAHRunhy3dHNCXaziHL2-jC2NPbwk1WnUkfEBYQxBzeX3bTYfFw4q0iN7IWcYvLkD2zsj18vwjDTwEFP0-vZNbidXNEApHc3NcPw7sbS6vjYL7fNvsbEMWug8UVjI4pioEjHO3uaQtHpPslA5LSpGYBGeOKwzvhqdQj2slzw4whTrOgnQ4gCpBrZT9n3ETzaDXiXVlVM2hU2tZIGaT_HmLC9SaC96c
+      User-Agent:
+      - Faraday v2.7.5
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - public, max-age=0
+      Etag:
+      - '"MC-ImE5NDZiNjA0M2M2ODAyMDM3NGY4NzExNGJjMTcwMGU0Ig=="'
+      X-Robots-Tag:
+      - noindex, nofollow
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version,
+        X-Cloud-Trace-Context, client-token, content-access-token
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '604800'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 07 Jun 2023 00:33:22 GMT
+      Server:
+      - envoy
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "id" : "3EUY0ONWvSVTndWD8ij4HR",
+          "name" : "Facade Test Populated Playlist",
+          "tracks" : {
+            "items" : [ {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6DMUAqxiFfLdqXv0vqcrQA",
+                  "name" : "blink-182"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/1oTo3ijRbaDAtrjJrGAPSw",
+                "name" : "I Miss You"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/7cO0T3BJ6xAkv0BX3TXFAp",
+                  "name" : "RARE"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/6GgUYuCp1Gac8ECGODmL7R",
+                "name" : "Youth"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/4SZko61aMnmgvNhfhgTuD3",
+                  "name" : "Graduation"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/0j2T0R9dR9qdJYsB7ciXhf",
+                "name" : "Stronger"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/5JpH5T1sCYnUyZD6TM0QaY",
+                  "name" : "Cry Baby (Deluxe Edition)"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/6wNeKPXF0RDKyvfKfri5hf",
+                "name" : "Dollhouse"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/47BiFcV59TQi2s9SkBo2pb",
+                  "name" : "Recovery"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/4SE4yewyGpOYfxfx59Yjc5",
+                "name" : "Cinderella Man"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/007DWn799UWvfY1wwZeENR",
+                  "name" : "i am > i was"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/50a8bKqlwDEqeiEknrzkTO",
+                "name" : "ball w/o you"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/3pKTKC0AAe3yTcXQLzvpSW",
+                  "name" : "Trigga Reloaded"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/4NYwy0R3NdvORX2B6OZXBT",
+                "name" : "Slow Motion"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/3MATDdrpHmQCmuOcozZjDa",
+                  "name" : "TESTING"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2MF4HtZHBoUliOi9nOAbS0",
+                "name" : "Purity (feat. Frank Ocean)"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/4UlGauD7ROb3YbVOFMgW5u",
+                  "name" : "ANTI (Deluxe)"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/72TFWvU3wUYdUuxejTTIzt",
+                "name" : "Work"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/3X1Ljgkvf2cLwi8mMjhvKy",
+                  "name" : "Shine"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7rfiXyFb5M9BqdkvKvVEiB",
+                "name" : "My Love (feat. Major Lazer, WizKid, Dua Lipa)"
+              }
+            } ]
+          }
+        }
+  recorded_at: Wed, 07 Jun 2023 00:33:22 GMT
+recorded_with: VCR 6.1.0

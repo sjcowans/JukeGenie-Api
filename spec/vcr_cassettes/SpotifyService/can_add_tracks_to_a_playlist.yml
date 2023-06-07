@@ -1,0 +1,487 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://accounts.spotify.com/api/token
+    body:
+      encoding: US-ASCII
+      string: grant_type=refresh_token&refresh_token=<REFRESH_TOKEN>
+    headers:
+      User-Agent:
+      - Faraday v2.7.5
+      Authorization:
+      - Basic NTIwODc0ZDQzYjg5NGM4M2JhNzc4MTcxYWVhZDE2YTU6M2U4OTBhM2Q5Nzg1NDE5YThjOTFkOWU5Y2RmYmE0NTY=
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 07 Jun 2023 00:33:35 GMT
+      Content-Type:
+      - application/json
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - __Host-device_id=AQDibQd9a1KOmOQ5y3ivWBtODTBR27iQORVBrixZmSqCheZOMKT0lUj5ecNuFRNrbivLYz_AlNzuIZF9wygfp-l0F8GmEQw5NO0;Version=1;Path=/;Max-Age=2147483647;Secure;HttpOnly;SameSite=Lax
+      - sp_tr=false;Version=1;Domain=accounts.spotify.com;Path=/;Secure;SameSite=Lax
+      Sp-Trace-Id:
+      - e252c854d643e008
+      X-Envoy-Upstream-Service-Time:
+      - '21'
+      Server:
+      - envoy
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"BQCI71UgAHeo1rq2i3f7XJLtIohXU8_CA3MHdK267JTM1xO7T3xHNDYALyX44iSpiDO_g8VGKxsXkSryNuR26LdWXDsEliMAaNdst2igN2JMbCvJdATK6-N8HGyUdzA8y00ilUDSkZaAVSsxTqlBQslJ0ZbGdzwzig3ctK3skdJI-SkI_XCG4pe_NmcmqlPf-_Rya_0pKqgAq1kJM1YYZPQcmLijGdQ","token_type":"Bearer","expires_in":3600,"scope":"user-library-modify
+        playlist-modify-public user-read-email"}'
+  recorded_at: Wed, 07 Jun 2023 00:33:35 GMT
+- request:
+    method: post
+    uri: https://api.spotify.com/v1/playlists/53wxBdREY48iHXn8Ke7PAJ/tracks
+    body:
+      encoding: UTF-8
+      string: '{"uris":["spotify:track:2TpxZ7JUBn3uw46aR7qd6V","spotify:track:7dt6x5M1jzdTEt8oCbisTK"],"position":null}'
+    headers:
+      Authorization:
+      - Bearer BQCI71UgAHeo1rq2i3f7XJLtIohXU8_CA3MHdK267JTM1xO7T3xHNDYALyX44iSpiDO_g8VGKxsXkSryNuR26LdWXDsEliMAaNdst2igN2JMbCvJdATK6-N8HGyUdzA8y00ilUDSkZaAVSsxTqlBQslJ0ZbGdzwzig3ctK3skdJI-SkI_XCG4pe_NmcmqlPf-_Rya_0pKqgAq1kJM1YYZPQcmLijGdQ
+      User-Agent:
+      - Faraday v2.7.5
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - private, max-age=0
+      X-Robots-Tag:
+      - noindex, nofollow
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version,
+        X-Cloud-Trace-Context, client-token, content-access-token
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '604800'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 07 Jun 2023 00:33:34 GMT
+      Server:
+      - envoy
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "snapshot_id" : "MTgsZjQ2OGYzMjI2Njc3NTk4Yzc4ZTc0OTljNGM3OTY1OWE2MWQzMmJkMQ=="
+        }
+  recorded_at: Wed, 07 Jun 2023 00:33:35 GMT
+- request:
+    method: get
+    uri: https://api.spotify.com/v1/playlists/53wxBdREY48iHXn8Ke7PAJ?fields=name,id,tracks.items(track(name,href,album(name,href)))
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer BQCI71UgAHeo1rq2i3f7XJLtIohXU8_CA3MHdK267JTM1xO7T3xHNDYALyX44iSpiDO_g8VGKxsXkSryNuR26LdWXDsEliMAaNdst2igN2JMbCvJdATK6-N8HGyUdzA8y00ilUDSkZaAVSsxTqlBQslJ0ZbGdzwzig3ctK3skdJI-SkI_XCG4pe_NmcmqlPf-_Rya_0pKqgAq1kJM1YYZPQcmLijGdQ
+      User-Agent:
+      - Faraday v2.7.5
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - public, max-age=0
+      Etag:
+      - '"MC-IjFiNjE2YjQ4MzE1Y2FiMzc5ZmJhNGYxNDNjMjdlODdhIg=="'
+      X-Robots-Tag:
+      - noindex, nofollow
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Accept, App-Platform, Authorization, Content-Type, Origin, Retry-After, Spotify-App-Version,
+        X-Cloud-Trace-Context, client-token, content-access-token
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE, PATCH
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '604800'
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      Date:
+      - Wed, 07 Jun 2023 00:33:35 GMT
+      Server:
+      - envoy
+      Via:
+      - HTTP/2 edgeproxy, 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "id" : "53wxBdREY48iHXn8Ke7PAJ",
+          "name" : "My Test Playlist",
+          "tracks" : {
+            "items" : [ {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK",
+                  "name" : "Place In The Sun"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
+                "name" : "All I Want"
+              }
+            }, {
+              "track" : {
+                "album" : {
+                  "href" : "https://api.spotify.com/v1/albums/6trNtQUgC8cgbWcqoMYkOR",
+                  "name" : "beerbongs & bentleys"
+                },
+                "href" : "https://api.spotify.com/v1/tracks/7dt6x5M1jzdTEt8oCbisTK",
+                "name" : "Better Now"
+              }
+            } ]
+          }
+        }
+  recorded_at: Wed, 07 Jun 2023 00:33:35 GMT
+recorded_with: VCR 6.1.0
