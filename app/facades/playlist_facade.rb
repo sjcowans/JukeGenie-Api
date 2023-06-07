@@ -13,7 +13,7 @@ class PlaylistFacade
       range: params[:range],
       input_address: params[:input_address]
     )
-    UserPlaylist.create(user_id: @user.id, playlist_id: playlist.id)
+    UserPlaylist.create(user_id: @user.id, playlist_id: playlist.id, dj: true)
     playlist
   end
 
