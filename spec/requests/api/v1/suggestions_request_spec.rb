@@ -3,10 +3,10 @@ require 'rails_helper'
 describe "Suggestions API Calls" do
   describe "POST /api/v1/suggestions" do
     it "is passed valid ids as JSON from user and playlist and creates a suggestion" do
-      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "1", spotify_id: "fasidfuasfd")
-      playlist = Playlist.create!(name: "Bob's playlist", lat: 1.120394, lon: 1.352345)
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", spotify_id: "fasidfuasfd")
+      playlist = Playlist.create!(name: "Bob's playlist", latitude: 1.120394, longitude: 1.352345, host_id: user.id, spotify_id: "q3oriu", input_address: "This address", host_id: user.id, spotify_id: "q3oriu", input_address: "This address")
 
-      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id, host: true)
+      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id)
 
       expect(user.suggestions.count).to eq(0)
       expect(playlist.suggestions.count).to eq(0)
@@ -14,14 +14,14 @@ describe "Suggestions API Calls" do
       suggestions_params = {
           "user_id": user.id,
           "playlist_id": playlist.id,
-          "media_type": 0,
+          "seed_type": 0,
           "request": "Hey Jude"
       }
 
       headers = {"CONTENT_TYPE" => "application/json"}
 
       post "/api/v1/suggestions", headers: headers, params: JSON.generate(suggestion: suggestions_params)
-
+      
       expect(response).to be_successful
       expect(response.status).to eq(201)
 
@@ -38,8 +38,8 @@ describe "Suggestions API Calls" do
       expect(formatted_responce[:data]).to have_key(:attributes)
       expect(formatted_responce[:data][:attributes]).to be_a(Hash)
 
-      expect(formatted_responce[:data][:attributes]).to have_key(:media_type)
-      expect(formatted_responce[:data][:attributes][:media_type]).to be_a(String)
+      expect(formatted_responce[:data][:attributes]).to have_key(:seed_type)
+      expect(formatted_responce[:data][:attributes][:seed_type]).to be_a(String)
 
       expect(formatted_responce[:data][:attributes]).to have_key(:playlist_id)
       expect(formatted_responce[:data][:attributes][:playlist_id]).to be_a(Integer)
@@ -66,14 +66,14 @@ describe "Suggestions API Calls" do
       suggestions_params = {
         "user_id": "29382",
         "playlist_id": "23094",
-        "media_type": 0,
+        "seed_type": 0,
         "request": "Hey Jude"
     }
 
       headers = {"CONTENT_TYPE" => "application/json"}
 
       post "/api/v1/suggestions", headers: headers, params: JSON.generate(suggestion: suggestions_params)
-
+      
       expect(response).to_not be_successful
       expect(response.status).to eq(404)
 
@@ -82,7 +82,7 @@ describe "Suggestions API Calls" do
       expect(error_message).to eq({
         "errors": [
               {
-                  "detail": "Validation failed: User must exist, Playlist must exist"
+                  "detail": "Couldn't find User with 'id'=29382"
               }
           ]
       }
@@ -93,7 +93,7 @@ describe "Suggestions API Calls" do
       suggestions_params = {
         "user_id": "",
         "playlist_id": "",
-        "media_type": 0,
+        "seed_type": 0,
         "request": "Hey Jude"
     }
 
@@ -101,7 +101,7 @@ describe "Suggestions API Calls" do
 
       post "/api/v1/suggestions", headers: headers, params: JSON.generate(suggestion: suggestions_params)
 
-      expect(response.status).to eq(400)
+      expect(response.status).to eq(404)
       expect(response).to_not be_successful
 
       error_message = JSON.parse(response.body, symbolize_names: true)
@@ -109,7 +109,7 @@ describe "Suggestions API Calls" do
       expect(error_message).to eq({
             "errors": [
                 {
-                    "detail": "Validation failed: User can't be blank, Playlist can't be blank"
+                    "detail": "Couldn't find User with 'id'="
                 }
             ]
         }
@@ -117,17 +117,17 @@ describe "Suggestions API Calls" do
     end
 
     it "if suggestion already exists based on ids, new suggestion is still created" do
-      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "1", spotify_id: "fasidfuasfd")
-      playlist = Playlist.create!(name: "Bob's playlist", lat: 1.120394, lon: 1.352345)
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", spotify_id: "fasidfuasfd")
+      playlist = Playlist.create!(name: "Bob's playlist", latitude: 1.120394, longitude: 1.352345, host_id: user.id, spotify_id: "q3oriu", input_address: "This address")
 
-      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id, host: true)
+      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id, dj: true)
 
-      suggestion1 = Suggestion.create!(user_id: user.id, playlist_id: playlist.id, media_type: 0, request: "Hey Jude")
+      suggestion1 = Suggestion.create!(user_id: user.id, playlist_id: playlist.id, seed_type: 0, request: "Hey Jude")
 
       suggestions_params = {
           "user_id": user.id,
           "playlist_id": playlist.id,
-          "media_type": 0,
+          "seed_type": 0,
           "request": "Golden Slumbers"
       }
 
@@ -152,8 +152,8 @@ describe "Suggestions API Calls" do
       expect(formatted_responce[:data]).to have_key(:attributes)
       expect(formatted_responce[:data][:attributes]).to be_a(Hash)
 
-      expect(formatted_responce[:data][:attributes]).to have_key(:media_type)
-      expect(formatted_responce[:data][:attributes][:media_type]).to be_a(String)
+      expect(formatted_responce[:data][:attributes]).to have_key(:seed_type)
+      expect(formatted_responce[:data][:attributes][:seed_type]).to be_a(String)
 
       expect(formatted_responce[:data][:attributes]).to have_key(:playlist_id)
       expect(formatted_responce[:data][:attributes][:playlist_id]).to be_a(Integer)
@@ -183,12 +183,12 @@ describe "Suggestions API Calls" do
 
   describe "DELETE /api/v1/suggestions" do
     it "destroys the existing suggestion" do
-      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "1", spotify_id: "fasidfuasfd")
-      playlist = Playlist.create!(name: "Bob's playlist", lat: 1.120394, lon: 1.352345)
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", spotify_id: "fasidfuasfd")
+      playlist = Playlist.create!(name: "Bob's playlist", latitude: 1.120394, longitude: 1.352345, host_id: user.id, spotify_id: "q3oriu", input_address: "This address")
 
-      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id, host: true)
+      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id, dj: true)
 
-      suggestion1 = Suggestion.create!(user_id: user.id, playlist_id: playlist.id, media_type: 0, request: "Hey Jude")
+      suggestion1 = Suggestion.create!(user_id: user.id, playlist_id: playlist.id, seed_type: 0, request: "Hey Jude")
 
       expect(Suggestion.count).to eq(1)
       expect(user.suggestions.count).to eq(1)
@@ -214,12 +214,12 @@ describe "Suggestions API Calls" do
     end
 
     it "if passed in ids do not lead to a found Suggestion, error 404 is sent" do
-      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", role: "1", spotify_id: "fasidfuasfd")
-      playlist = Playlist.create!(name: "Bob's playlist", lat: 1.120394, lon: 1.352345)
+      user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", spotify_id: "fasidfuasfd")
+      playlist = Playlist.create!(name: "Bob's playlist", latitude: 1.120394, longitude: 1.352345, host_id: user.id, spotify_id: "q3oriu", input_address: "This address")
 
-      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id, host: true)
+      user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id, dj: true)
 
-      suggestion1 = Suggestion.create!(user_id: user.id, playlist_id: playlist.id, media_type: 0, request: "Hey Jude")
+      suggestion1 = Suggestion.create!(user_id: user.id, playlist_id: playlist.id, seed_type: 0, request: "Hey Jude")
 
 
 

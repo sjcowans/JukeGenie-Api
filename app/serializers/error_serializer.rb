@@ -54,4 +54,14 @@ class ErrorSerializer
       ]
     }
   end
+
+  def no_playlists_found
+    {
+      errors: [
+        {
+          detail: "No playlists found near this location!"
+        }
+      ]
+    }
+  end
 end
