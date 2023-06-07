@@ -16,7 +16,7 @@ class Api::V1::PlaylistsController < ApplicationController
   private
 
   def initialize_facade
-    user = User.find_by(params[:id])
+    user = User.find(params[:id])
     @facade = PlaylistFacade.new(user)
   end
 
