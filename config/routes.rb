@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :suggestions, only: %i[new create update]
       delete "/suggestions", to: "suggestions#destroy"
       get '/users/:id/playlists', to: "users/playlists#index"
+      post '/users/:id/playlists', to: "users/playlists#create"
     end
   end
 
