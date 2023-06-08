@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/playlists', to: 'playlists#create'
       get '/playlists', to: 'playlists#index'
+      get '/playlists/:id', to: 'playlists#show'
       resources :tracks, only: %i[show new create update destroy]
       resources :users, only: %i[new create show update]
       resources :suggestions, only: %i[new create update]
