@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       delete "/suggestions", to: "suggestions#destroy"
       get '/users/:id/playlists', to: "users/playlists#index"
       post '/users/:id/playlists', to: "users/playlists#create"
+      patch '/users/:id/playlists/:id', to: "playlists#populate"
     end
   end
 
