@@ -4,7 +4,7 @@ describe "Suggestions API Calls" do
   describe "POST /api/v1/suggestions" do
     it "is passed valid ids as JSON from user and playlist and creates a suggestion" do
       user = User.create!(username: "Bob", email: "bob@bob.com", token: "fasodijasdfokn", spotify_id: "fasidfuasfd")
-      playlist = Playlist.create!(name: "Bob's playlist", latitude: 1.120394, longitude: 1.352345, host_id: user.id, spotify_id: "q3oriu", input_address: "This address", host_id: user.id, spotify_id: "q3oriu", input_address: "This address")
+      playlist = Playlist.create!(name: "Bob's playlist", latitude: 1.120394, longitude: 1.352345, host_id: user.id, spotify_id: "q3oriu", input_address: "This address")
 
       user_playlist = UserPlaylist.create!(user_id: user.id, playlist_id: playlist.id)
 
