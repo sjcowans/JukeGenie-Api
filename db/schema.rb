@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.string "spotify_id"
@@ -22,8 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
   end
 
   create_table "playlist_tracks", force: :cascade do |t|
-    t.integer "playlist_id", null: false
-    t.integer "track_id", null: false
+    t.bigint "playlist_id", null: false
+    t.bigint "track_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["playlist_id"], name: "index_playlist_tracks_on_playlist_id"
@@ -38,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
     t.float "range", default: 0.0
     t.string "spotify_id"
     t.string "join_key"
-    t.integer "host_id", null: false
+    t.bigint "host_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["host_id"], name: "index_playlists_on_host_id"
@@ -50,8 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
     t.string "track_artist"
     t.string "spotify_artist_id"
     t.string "spotify_track_id"
-    t.integer "user_id", null: false
-    t.integer "playlist_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "playlist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["playlist_id"], name: "index_suggestions_on_playlist_id"
@@ -68,8 +71,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
   end
 
   create_table "user_playlists", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "playlist_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "playlist_id", null: false
     t.boolean "dj", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
