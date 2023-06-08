@@ -1,7 +1,7 @@
 class PlaylistFacade
   def initialize(user)
     @user = user
-    @service = SpotifyService.new(user.token)
+    @service = SpotifyService.new(@user.token)
   end
 
   def create_playlist(params)
@@ -11,9 +11,16 @@ class PlaylistFacade
       name: info[:name],
       spotify_id: info[:id],
       range: params[:range],
-      input_address: params[:input_address]
+      input_address: params[:input_address],
+      join_key: SecureRandom.urlsafe_base64(4).to_s
     )
     UserPlaylist.create(user_id: @user.id, playlist_id: playlist.id, dj: true)
+    playlist
+  end
+
+  def create_user_playlist(params)
+    playlist = Playlist.find_by_join_key(params[:join_code])
+    UserPlaylist.create(user_id: params[:user_id], playlist_id: playlist.id, dj: false)
     playlist
   end
 

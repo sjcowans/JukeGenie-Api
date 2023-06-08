@@ -37,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_181320) do
     t.string "input_address"
     t.float "range", default: 0.0
     t.string "spotify_id"
+    t.string "join_key"
     t.integer "host_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
