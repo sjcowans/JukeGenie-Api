@@ -27,7 +27,7 @@ class Api::V1::PlaylistsController < ApplicationController
   def populate
     playlist = Playlist.find_by(spotify_id: params[:spotify_id])
     @facade.populate_playlist(playlist)
-    render json: PlaylistSerializer.new(playlist).serializable_hash.to_json, status: :ok
+    response = render json: PlaylistSerializer.new(playlist).serializable_hash.to_json, status: :ok
   end
 
   private

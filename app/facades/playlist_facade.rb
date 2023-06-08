@@ -28,7 +28,7 @@ class PlaylistFacade
     playlist.suggestions.each_slice(5).with_index do |batch, index|
       seeds = generate_seeds(batch)
       track_uris = create_tracks_and_get_uris(seeds, playlist)
-      @service.add_tracks_to_playlist(playlist.spotify_id, track_uris, position: index*5)
+      result = @service.add_tracks_to_playlist(playlist.spotify_id, track_uris, position: index*5)
     end
     playlist
   end

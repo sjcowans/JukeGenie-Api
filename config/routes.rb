@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       post '/playlists', to: 'playlists#create'
       get '/playlists', to: 'playlists#index'
       get '/playlists/:id', to: 'playlists#show'
+      post '/playlists/:id/populate', to: 'playlists#populate'
       resources :tracks, only: %i[show new create update destroy]
       resources :users, only: %i[new create show update]
       resources :suggestions, only: %i[new create update]
