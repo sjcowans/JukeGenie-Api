@@ -1,7 +1,7 @@
 class PlaylistFacade
   def initialize(user)
     @user = user
-    @service = SpotifyService.new(user.token)
+    @service = SpotifyService.new(@user.token)
   end
 
   def create_playlist(params)
