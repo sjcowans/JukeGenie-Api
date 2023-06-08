@@ -1,3 +1,4 @@
+Rails.application.routes.default_url_options[:host] = "https://juke-genie-api.herokuapp.com/"
 Rails.application.routes.draw do
   get '/', to: 'welcome#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
