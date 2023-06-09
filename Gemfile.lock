@@ -214,6 +214,7 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
+    sqlite3 (1.6.3-x86_64-darwin)
     thor (1.2.2)
     timeout (0.3.2)
     tzinfo (2.0.6)
@@ -242,12 +243,13 @@ DEPENDENCIES
   jsonapi-serializer
   omniauth
   omniauth-spotify
-  pg
+  pg (~> 1.1)
   pry
   puma (~> 5.0)
   rails (~> 7.0.5)
   rspec-rails
   shoulda-matchers
+  sqlite3 (~> 1.4)
   tzinfo-data
   vcr
   webmock
