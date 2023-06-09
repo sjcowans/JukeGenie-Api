@@ -5,7 +5,7 @@ class LoginController < ApplicationController
       # client_id: ENV['client_id'],
       client_id: 'edfc246cd9c44a8b84ae3a864692f2e5',
       response_type: "code",
-      redirect_uri: 'https://juke-genie-api.herokuapp.com//auth/spotify/callback', allow_other_host: true,
+      redirect_uri: 'https://juke-genie.herokuapp.com/auth/spotify/callback', allow_other_host: true,
       scope: 'user-read-email playlist-modify-public user-library-read user-library-modify',
       show_dialog: true
     }
