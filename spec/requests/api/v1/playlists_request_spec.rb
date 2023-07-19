@@ -19,7 +19,6 @@ describe "Playlists API" do
       expect(response).to be_successful
   
       playlists = JSON.parse(response.body, symbolize_names: true)
-  
       expect(playlists[:data].count).to eq(2)
   
       playlists[:data].each do |playlist|
