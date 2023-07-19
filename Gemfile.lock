@@ -147,6 +147,7 @@ GEM
       omniauth (~> 2.0)
     omniauth-spotify (0.0.13)
       omniauth-oauth2 (~> 1.1)
+    pg (1.5.3)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -243,6 +244,7 @@ DEPENDENCIES
   jsonapi-serializer
   omniauth
   omniauth-spotify
+  pg
   pry
   puma (~> 5.0)
   rails (~> 7.0.5)
